@@ -14,6 +14,8 @@ class CreateEntryTable extends Migration
     public function up()
     {
         Schema::create('entry', function (Blueprint $table) {
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('event_id');

@@ -36,6 +36,20 @@
         @csrf
         <div class="form-group">
             <input class="form-control" type="text" name="event_name" placeholder="イベント名">
+        </div>
+        <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            イベント種別
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item">コンサート</a></li>
+                <li><a class="dropdown-item">展示</a></li>
+                <li><a class="dropdown-item">体験</a></li>
+            </ul>
+        </div>
+        
+        <div class="form-group">
             <input class="form-control" type="text" name="event_date" placeholder="開催日">
             <input class="form-control" type="text" name="place" placeholder="開催場所">
             <input class="form-control" type="text" name="period_start" placeholder="申込開始日">

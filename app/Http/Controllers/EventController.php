@@ -14,10 +14,10 @@ class EventController extends Controller
 
     public function eventRegister(Request $request) {
 
-        $event = new Event();
-        $event->event_name = $request->event_name;
+        // $event = new Event();
+        // $event->event_name = $request->event_name;
 
-        $event->save();
+        // $event->save();
 
 
         return view('event.top');

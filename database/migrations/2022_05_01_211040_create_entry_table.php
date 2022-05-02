@@ -13,7 +13,7 @@ class CreateEntryTable extends Migration
      */
     public function up()
     {
-        Schema::create('entry', function (Blueprint $table) {
+        Schema::create('entries', function (Blueprint $table) {
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_general_ci';
             $table->increments('id');
@@ -30,6 +30,6 @@ class CreateEntryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entry');
+        Schema::dropIfExists('entries');
     }
 }

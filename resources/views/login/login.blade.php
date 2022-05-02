@@ -24,6 +24,6 @@
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     </head>
     <body>
-    
+    <h1>title</h1>
     </body>
 </html>

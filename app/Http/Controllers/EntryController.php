@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Entry;
 
+use App\Models\Event;
+
 class EntryController extends Controller
 {
     /**
@@ -16,9 +18,14 @@ class EntryController extends Controller
         */
     public function index(Request $request)
     {
-        $entrys = Entry::orderBy('created_at', 'asc')->get();
-        return view('entrys.index', [
-            'entrys' => $entrys,
+        $events = event::orderBy('created_at', 'desc')->get();
+        return view('entry.index', [
+            'events' => $events,
         ]);
+    }
+    public function summry(Request $request)
+    {
+        $event = event::find($request->id);
+        return view('entry.summry', ['event' => $event]);
     }
 }

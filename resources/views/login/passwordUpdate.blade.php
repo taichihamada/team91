@@ -31,29 +31,33 @@
                </div>
             <form action="{{ url('/login/update') }}" method="POST">
             @csrf
+            @if(session('message'))
+                <div class="alert alert-danger">
+                {{ session('message') }}
+                </div>
+            @endif
             <input type="hidden" name="reset_token" value="{{ $reset_token }}">
 
                 <div class="mb-3 row">
                         <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">新しい<br>パスワード</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="password"><br>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="password"><br>
                     </div>
                 </div>
                         <div class="mb-3 row">    
                             <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">新しいパスワード(確認)</label>
                         <div class="col-sm-10">
-                            <input type="checkPassword" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="checkPassword">
+                            <input type="password_confirmation" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="password_confirmation">
                         </div>
                         </div>
-                            <span class="text-danger">@error('email'){{ $messege }} @enderror</span>
                         
                         <font size="1">パスワード再発行後、自動的にログイン画面に移動します。<br>
                                 新しいパスワードでログインください。</font>
                             
                         <div class="form-group">    
-                        <div class="send">
-                        <br><input type="submit" value="再発行">
-                        </div>
+                            <div class="send">
+                                <br><input type="submit" value="再発行">
+                            </div>
                         </div>
                     </div>
                 </div>  

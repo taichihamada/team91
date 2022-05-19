@@ -28,4 +28,9 @@ class EntryController extends Controller
         $event = event::find($request->id);
         return view('entry.summry', ['event' => $event]);
     }
+    public function application(Request $request)
+    {
+        $event = event::find($request->id);
+        return view('entry.application', ['event' => $event]);
+    }
 }

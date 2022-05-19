@@ -14,6 +14,7 @@
 </head>
  
 <body class="home">
+<body style="background-color:#CCFFFF;">
 <div class="container">
         <div class="main">
         <div class="main-header">
@@ -23,13 +24,22 @@
             <!-- ホーム画面　イベント概要 -->
             <div class="home">
                 <h2>イベント概要</h2>
+                <h3>生徒が気軽に楽しめる・学べるよう毎月数多くのイベントを開催！</h3>
                 <h2>説明</h2>
+                <h3>ひとりでプログラミング学習を進めていく上で、つまずいたりモチベーションが下がってしまう時がどうしてもあると思います。<br>
+                    ここでは、毎月生徒のプログラミング学習に役立つ勉強会や、講師や現役で活躍されているエンジニアによるセミナー、
+                    生徒同士の交流会などがあり、外部とのコミュニケーションを図る事で交流を広め、モチベーションの向上に繋がる事を期待しています。</h3>
         </div>
 
-            <!-- ホーム画面　イベント一覧 -->
+            <!-- ホーム画面　検索 -->
             <div class="home">
-            <h3>検索</h3>
-            <h4>イベント一覧</h4>
+            <form action="/entry/summry" method="GET">
+            <input type="search" name="search" placeholder="検索したいイベントを入力" style="width: 500px;margin-right:auto;">
+            <input type="submit" name="submit" value="検索">
+            </form>
+
+            <!-- ホーム画面　イベント一覧 -->
+            <h2>イベント一覧</h2>
             <table class="table">
                 <tr>
                 <th>id</th>
@@ -48,6 +58,12 @@
                 </tr>
                 @endforeach
             </table>
+
+            <!-- ホーム画面　イベント申込フォームボタン -->
+            <div class="application">
+            <form action="application.blade.php" method="get">
+                <button type="submit" class="btn">イベント申込</button>
+            </div>
         </div>
     </div>
 </body>

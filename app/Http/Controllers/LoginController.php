@@ -2,11 +2,114 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginFormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator; 
+use App\Mail\ContactReply; 
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class LoginController extends Controller
 {
-    public function login(){
-        return view('login');
+
+
+    /**
+     * @return View
+     */
+    public function login()  //ログイン画面を表示
+    {
+
+        return view('login.login');
     }
-}
+
+    
+
+
+    public function index()   //メールアドレス入力フォーム表示
+    {
+        return view('login.index');
+    }
+
+
+    public function send(Request $request)  
+    {
+        $this->validate($request, ['email' => 'required|email']);
+
+        $user = User::where('email','=',$request->email)->first();
+        
+
+        if (is_null($user)) {
+            return redirect()->back()->with('message','メールアドレスが存在しません。');
+        }
+
+        $token = Str::random(32);//トークン生成
+
+        $user->reset_token=$token; //リセットトークンの更新
+        $user->created_at_token=date('Y-m-d H:i:s');//リセットトークン発行時間の更新
+        $user->save(); //DBに保存
+        
+
+
+           mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
+           ->send(new ContactReply($token));
+        
+            return view('login.notice'); //送信完了通知画面表示
+    
+    }
+
+    //メールに添付のパスワード再発行URL画面を表示
+    public function posts(Request $request,$token)
+    {   
+       
+        $createTime = User::where('reset_token',$request->token)->first();
+       
+        //数値型になおす
+        $timeTest = time() - strtotime($createTime->created_at_token);
+        
+        if ($timeTest > 3600) {
+            return view('login.error');
+        
+        } else {
+        
+            return view('login.passwordUpdate', [
+            'reset_token' => $token,
+        ]); 
+        }
+    }
+    
+    //パスワードのアップデート後、ログイン画面を表示
+    public function update(Request $request)   
+    {
+        $validator = Validator::make($request->all(),[
+            'password' => 'required|min:8|confirmed'
+        ]);
+        
+        //入力値が8文字以上かバリデーションしている
+        if ($validator->fails()) {
+            return redirect()->back()->with('message','8文字以上を入れて下さい。');
+        }
+          
+
+       //tokenが一致してるかの処理
+       $user = User::where('reset_token','=',$request->reset_token)->first();
+       
+       // トークンが一致しない場合、エラーメッセージが出る
+       if (is_null($user)) {
+        return redirect()->back()->with('message','もう一度メールを再発行してください。');
+       }
+       $user->password = Hash::make($request['password']);
+       $user->save();
+
+             return view('login.login');
+        }
+    }
+
+
+
+

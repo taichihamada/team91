@@ -28,32 +28,7 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    /**
-     * 認証の試行を処理
-     * 
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-  // public function authenticate(LoginFormRequest $request){
-
-        // $credentials = $request->validate([
-            // 'email' => ['required', 'email'],
-            // 'password' => ['required']
-        // ]);
-
-        // if (Auth::attempt($credentials)) {
-            // $request->session()->regenerate();
-
-            // return redirect('home')->with('login_success' ,'ログイン成功しました！');
-        //}
-
-        //return back()->withErrors([
-          //  'login_error' => 'メールアドレスかパスワードが間違っています。',
-        //]);
-    //}
-
+    
 
 
     public function index()   //メールアドレス入力フォーム表示
@@ -74,11 +49,9 @@ class LoginController extends Controller
         }
 
         $token = Str::random(32);//トークン生成
-        //dd($user->name);
 
         $user->reset_token=$token; //リセットトークンの更新
         $user->created_at_token=date('Y-m-d H:i:s');//リセットトークン発行時間の更新
-
         $user->save(); //DBに保存
         
 
@@ -90,29 +63,42 @@ class LoginController extends Controller
     
     }
 
-
+    //メールに添付のパスワード再発行URL画面を表示
     public function posts(Request $request,$token)
     {   
-        //トークンのチェックと
-        $user = User::where('reset_token','=',$request->reset_token)->first();
-        $user = User::where('update_at','=',$request->update_at);//バリデーション？をかけたい
-        //時間の比較
-        return view('login.passwordUpdate', [
+       
+        $createTime = User::where('reset_token',$request->token)->first();
+       
+        //数値型になおす
+        $timeTest = time() - strtotime($createTime->created_at_token);
+        
+        if ($timeTest > 3600) {
+            return view('login.error');
+        
+        } else {
+        
+            return view('login.passwordUpdate', [
             'reset_token' => $token,
-        ]); //メールに添付のパスワード再発行URL画面を表示
+        ]); 
+        }
     }
-
-    public function update(Request $request)   //パスワードのアップデート後、ログイン画面を表示
+    
+    //パスワードのアップデート後、ログイン画面を表示
+    public function update(Request $request)   
     {
-        $validator = $request->validate([       // 8文字以上になってるかバリデーションしてる
-             'password' => 'required|min:8|confirmed'
-         ]);
+        $validator = Validator::make($request->all(),[
+            'password' => 'required|min:8|confirmed'
+        ]);
+        
+        //入力値が8文字以上かバリデーションしている
+        if ($validator->fails()) {
+            return redirect()->back()->with('message','8文字以上を入れて下さい。');
+        }
           
 
        //tokenが一致してるかの処理
-   //dd($request->reset_token);
        $user = User::where('reset_token','=',$request->reset_token)->first();
-       //dd($user);
+       
        // トークンが一致しない場合、エラーメッセージが出る
        if (is_null($user)) {
         return redirect()->back()->with('message','もう一度メールを再発行してください。');

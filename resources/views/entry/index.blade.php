@@ -60,12 +60,7 @@
             </table>
 
             <!-- ホーム画面　イベント申込フォームボタン -->
-            <div class="application">
-            <form action="application.blade.php" method="get">
-                <button type="submit" class="btn">イベント申込</button>
-            </div>
-        </div>
+            <a href="{{ url('/entry/application') }}" class="btn">イベント申込</a>
     </div>
 </body>
- 
 </html>

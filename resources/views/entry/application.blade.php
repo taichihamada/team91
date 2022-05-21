@@ -55,12 +55,14 @@
  <div class="btns">
    <input type="submit" value="登録"><br>
    <input type="reset" value="リセット">
+ </div>
 
 <!--   戻るボタン -->
 <div class="btns">
-   <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
-
- </div>
+<div class="back">
+   <a href="{{ url('/entry') }}">ホームへ戻る</a>
+</div>
+</div>
 
 </form>
 </body>

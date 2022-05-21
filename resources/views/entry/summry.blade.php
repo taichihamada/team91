@@ -22,6 +22,7 @@
 <!--   戻るボタン -->
 <div class="btns">
    <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
+</div>
    
 </body>
 </html>

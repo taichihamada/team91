@@ -28,7 +28,7 @@
         <table>
             <tr>
                 <td>・{{$value->name}} さん</td>
-                <td><button onclick="location.href='/user/edit/{{$value->id}}'" style="margin-left:auto">更新</button></td>
+                <td><button onclick="location.href='/user/edit/{{$value->id}}'" style="margin-left:auto" >更新</button></td>
             </tr>
         </table>
         @empty

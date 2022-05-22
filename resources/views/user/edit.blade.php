@@ -16,7 +16,7 @@
 <body>
     <div style="width: 500px; text-align:center; margin: 100px auto;">
         <h4>ユーザー更新画面</h4>
-        <form action="/user/edit" method="post">
+        <form action="/user/show" method="post">
             @csrf
             <input  class="form-control" type="text" name="id" value="{{$user->id}}" hidden>
             <div class="form-group">

@@ -23,6 +23,9 @@
 <div class="btns">
    <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
 </div>
+
+<!-- イベント申込フォームボタン -->
+<a href="{{ url('/entry/confirm') }}" class="btn">イベント申込</a>
    
 </body>
 </html>

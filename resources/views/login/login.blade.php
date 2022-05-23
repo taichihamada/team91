@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>login</title>
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,6 +24,29 @@
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     </head>
     <body>
-    <h1>title</h1>
+    <div style="width: 500px; text-align:center; margin: 100px auto;">
+        <h3>イベント申し込みサイト</h3><br>
+        <form class="login" method="POST"  action="{{route('authenticate') }}">
+            @csrf
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <div class="form-group">
+                <input class="form-control" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
+                <input class="form-control" type="text" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>
+                <button type="submit" class="btn btn-secondary">ログイン</button>
+            </div>
+        </form>
+        <div class="contactLink">
+            <div class="contactLink" style="text-align:center;">
+                <font size="2"><a href="{{ route('index') }}"> パスワードをリセットする </a></font>
+            </div>
+        </div>
     </body>
 </html>

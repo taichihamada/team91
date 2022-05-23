@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+}
+.ditch{
+    height: 25px;
+}
+
+.main{
+    width: 100%;
+}
+
+.error{
+    color: red;
+}
+
+.container .side{
+    width: 160px;
+    margin-left: 0;
+    min-width: 160px;
+}
+
+.container .side ul{
+    list-style: none;
+    padding-left: 0;
+}
+
+.registerList{
+    width: 100%;
+}
+
+.search-area{
+    width: 50%;
+    margin-left: 420px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+

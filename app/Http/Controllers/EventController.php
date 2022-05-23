@@ -30,28 +30,26 @@ class EventController extends Controller
     public function registerConfirm(Request $request){
         $rules = [
             'event_name' => 'required',
-            'event_category' => 'max:1',
+            'event_category' => 'integer',
             'overview' => 'required',
             'event_date' => 'date',
             'place' => 'required',
             'price' => 'integer',
             'period_start' => 'date',
             'period_end' => 'date',
-            'status' => 'max:1',
             'remarks' => 'required',
         ];
         
         $message = [
             'event_name.required' => 'イベント名を入力してください',
-            'event_category.max:1' => '項目の中から選択してください',
+            'event_category.integer' => '項目の中から選択してください',
             'overview.required' => 'イベントの詳細を入力してください',
             'event_date.date' => '日時を入力してください',
             'place.required' => '場所を入力してください',
             'price.integer' => '金額を入力してください',
             'period_start.date' => '申込開始日を入力してください',
-            'period_end.ate' => '申込締切日を入力してください',
-            'status.max:1' => '',
-            'remarks.nullable' => '',
+            'period_end.date' => '申込締切日を入力してください',
+            'remarks.required' => '備考欄を入力してください',
 
         ];
 
@@ -61,7 +59,10 @@ class EventController extends Controller
             ->withErrors($validator)
             ->withInput();
         }
-        return view('event/registerConfirm');
+        $event = $request->all();
+        return view('event/registerConfirm',[
+            'event' => $event,
+        ]);
     }
 
 
@@ -85,14 +86,42 @@ class EventController extends Controller
         return redirect('event/top');
     }
 
-
+    // イベント編集・削除
     public function update(Request $request) {
 
         $event = Event::where('id','=', $request->id)->first();
 
         return view('event/update')->with([
-            'Event => $event'
+            'event' => $event,
+        ]);
+    }
+    // イベント編集確認
+    public function updateConfirm(Request $request) {
+
+        $event = Event::where('id','=', $request->id)->first();
+        $event->event_name = $request->event_name;
+        $event->event_category = $request->event_category;
+        $event->overview = $request->overview;
+        $event->event_date = $request->event_date;
+        $event->place = $request->place;
+        $event->price = $request->price;
+        $event->period_start = $request->period_start;
+        $event->period_end = $request->period_end;
+        //TODO: $event->user_id = $request->user_id;
+        $event->status = $request->status;
+        $event->remarks = $request->remarks;
+        $event->save();
+
+        return view('event/updateConfirm')->with([
+            'event' => $event,
         ]);
     }
 
+    public function eventDelete(Request $request) {
+
+        $event = Event::where('id','=', $request->id)->first();
+        $event ->delete();
+
+        return redirect('event/top');
+    }
 }

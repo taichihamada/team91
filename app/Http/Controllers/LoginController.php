@@ -28,8 +28,33 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    
 
+/**
+     * 認証の試行を処理
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+
+
+public function authenticate(LoginFormRequest $request){
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect('home');
+        }
+
+                 return back()->withErrors([
+                    'errors' => 'メールアドレスかパスワードが間違っています。',
+                 ]);
+            
+    }
 
     public function index()   //メールアドレス入力フォーム表示
     {
@@ -87,12 +112,12 @@ class LoginController extends Controller
     public function update(Request $request)   
     {
         $validator = Validator::make($request->all(),[
-            'password' => 'required|min:8|confirmed'
+            'password' => 'required|min:8|regex:/^(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]/|confirmed'
         ]);
         
-        //入力値が8文字以上かバリデーションしている
+        //入力値が英数字8文字以上かバリデーションしている
         if ($validator->fails()) {
-            return redirect()->back()->with('message','8文字以上を入れて下さい。');
+            return redirect()->back()->with('message','半角英数字で8文字以上を入れて下さい。');
         }
           
 
@@ -108,6 +133,24 @@ class LoginController extends Controller
 
              return view('login.login');
         }
+
+
+    /**
+ * ユーザーをアプリケーションからログアウトさせる
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect()->route('login.login');
+}
     }
 
 

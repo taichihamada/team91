@@ -28,15 +28,16 @@
         <h3>イベント申し込みサイト</h3><br>
         <form class="login" method="POST"  action="{{route('authenticate') }}">
             @csrf
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                            </ul>
+                        </div>
+                    @endif
             <div class="form-group">
                 <input class="form-control" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
                 <input class="form-control" type="text" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>

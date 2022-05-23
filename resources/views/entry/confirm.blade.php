@@ -6,64 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/entry.css" rel="stylesheet">
 
-    <title>イベント申込フォーム</title>
+    <title>イベント申込確認フォーム</title>
 
 </head>
 <body>
-<h1>イベント申込フォーム</h1>
+<h1>イベント申込確認フォーム</h1>
 
 <form class="form" action="#" method="post">
  
- <!--   名前 -->
+<h2>申込内容確認</h2>
+
+ <!-- 申込イベント -->
  <div class="item">
-   <label class="label_left" for="name">名前</label>
-   <input id="name" type="text" placeholder="名前を入力" required><br>
+   申込内容
  </div>
 
- <!--   メールアドレス -->
- <div class="item">
-   <label  class="label_left" for="email">メールアドレス</label>
-   <input id="email" type="email" placeholder="メールアドレスを入力" required><br>
- </div>
+ <!-- 申込内容確認ボタン -->
+ <a href="{{ url('/entry/complete') }}" class="btn">申込</a>
 
- <!--   パスワード -->
- <div class="item">
-   <label class="label_left" for="password">パスワード</label>
-   <input id="password" type="password" placeholder="パスワードを入力" required><br>
- </div>
-
- <!--   イベント名 -->
- <div class="item">
-   <label  class="label_left"　for="events">参加したいイベント</label>
-   <select name="events" id="events">
-     <option value="">以下から選択してください</option>
-     <option value="ようこそ新入生">ようこそ新入生</option>
-     <option value="PHP勉強会">PHP勉強会</option>
-     <option value="Laravel学習会">Laravel学習会</option>
-     <option value="交流会">交流会</option>
-     <option value="女子会">女子会</option>
-   </select><br>
- </div>
-
- <!--   備考 -->
- <div class="item">
-   <label class="label_left" for="remarks">備考</label>
-   <textarea name="textarea" id="remarks" placeholder="備考を入力"></textarea><br>
- </div>
-
- <!--   登録・リセットボタン -->
- <div class="btns">
-   <input type="submit" value="登録"><br>
-   <input type="reset" value="リセット">
- </div>
-
-<!--   戻るボタン -->
-<div class="btns">
-<div class="back">
-   <a href="{{ url('/entry') }}">ホームへ戻る</a>
-</div>
+<!-- 戻るボタン -->
+<a href="{{ url('/entry/summry/{id}') }}" class="btn">イベント詳細へ戻る</a>
 </div>
 
 </form>
+
 </body>
 </html>

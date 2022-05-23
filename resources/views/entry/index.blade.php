@@ -58,9 +58,6 @@
                 </tr>
                 @endforeach
             </table>
-
-            <!-- ホーム画面　イベント申込フォームボタン -->
-            <a href="{{ url('/entry/application') }}" class="btn">イベント申込</a>
     </div>
 </body>
 </html>

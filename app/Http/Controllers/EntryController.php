@@ -38,4 +38,15 @@ class EntryController extends Controller
         $event = event::find($request->id);
         return view('entry.complete', ['event' => $event]);
     }
+
+    public function send(Request $request)  //メールの自動送信設定
+    {
+        Mail::send('emails.text', [], function($data){
+                $data   ->to('送信先のメアド')
+                        ->subject('イベント申込完了');
+        });
+
+        return back()->withInput($request->only(['name']))
+                     ->with('sent', '申込メール送信完了しました。');  //送信完了を表示
+    }
 }

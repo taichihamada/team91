@@ -16,5 +16,7 @@ Route::get('/', function () {
 
 Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index']);
 Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
+Route::get('/entry/confirm', [App\Http\Controllers\EntryController::class, 'confirm']);
 Route::post('/entry/confirm', [App\Http\Controllers\EntryController::class, 'confirm']);
+Route::get('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
 Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);

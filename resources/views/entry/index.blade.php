@@ -21,7 +21,7 @@
                 <h1>ホーム</h1>
             </div>
 
-            <!-- ホーム画面　イベント概要 -->
+            <!-- ホーム画面 イベント概要 -->
             <div class="home">
                 <h2>イベント概要</h2>
                 <h3>生徒が気軽に楽しめる・学べるよう毎月数多くのイベントを開催！</h3>
@@ -31,14 +31,15 @@
                     生徒同士の交流会などがあり、外部とのコミュニケーションを図る事で交流を広め、モチベーションの向上に繋がる事を期待しています。</h3>
         </div>
 
-            <!-- ホーム画面　検索 -->
+            <!-- ホーム画面 検索 -->
             <div class="home">
             <form action="/entry/summry" method="GET">
             <input type="search" name="search" placeholder="検索したいイベントを入力" style="width: 500px;margin-right:auto;">
             <input type="submit" name="submit" value="検索">
             </form>
+            </div>
 
-            <!-- ホーム画面　イベント一覧 -->
+            <!-- ホーム画面 イベント一覧 -->
             <h2>イベント一覧</h2>
             <table class="table">
                 <tr>

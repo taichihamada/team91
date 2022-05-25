@@ -34,10 +34,11 @@
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
-                                    @endforeach
+                                @endforeach
                             </ul>
                         </div>
                     @endif
+                    
             <div class="form-group">
                 <input class="form-control" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
                 <input class="form-control" type="text" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>

@@ -46,20 +46,29 @@ public function authenticate(LoginFormRequest $request){
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect('home');
+            $role = auth()->user()->userAuthority;
+            
+            //管理者画面
+            if ($role == 1) {
+                return redirect('event/top');
+            }
+            //ユーザー画面
+            if ($role == 2) {
+                return redirect('entry');
+            }
         }
 
-                 return back()->withErrors([
-                    'errors' => 'メールアドレスかパスワードが間違っています。',
-                 ]);
-            
-    }
+                return redirect('login')->withErrors([
+                    'login_errors' => 'メールアドレスかパスワードが間違っています。',
+                ]);
 
-    public function index()   //メールアドレス入力フォーム表示
-    {
-        return view('login.index');
-    }
+  
+        }
+
+        public function index()   //メールアドレス入力フォーム表示
+        {
+            return view('login.index');
+        }
 
 
     public function send(Request $request)  
@@ -131,7 +140,7 @@ public function authenticate(LoginFormRequest $request){
        $user->password = Hash::make($request['password']);
        $user->save();
 
-             return view('login.login');
+            return view('login.login');
         }
 
 

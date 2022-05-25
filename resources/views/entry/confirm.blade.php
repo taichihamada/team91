@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Bootstrap CSS -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="/css/entry.css" rel="stylesheet">
 
     <title>イベント申込確認フォーム</title>
@@ -12,23 +14,37 @@
 <body>
 <h1>イベント申込確認フォーム</h1>
 
-<form class="form" action="#" method="post">
- 
-<h2>申込内容確認</h2>
+<h2>申込内容</h2>
 
  <!-- 申込イベント -->
  <div class="item">
-   申込内容
+    <p>{{$event->event_name}}</p>
+    <p>{{$event->event_category}}</p>
+    <p>{{$event->overview}}</p>
+    <p>{{$event->event_date}}</p>
+    <p>{{$event->place}}</p>
+    <p>{{$event->price}}</p>
+    <p>{{$event->period_start}}</p>
+    <p>{{$event->period_end}}</p>
+    <p>{{$event->user_id}}</p>
+    <p>{{$event->remarks}}</p>
  </div>
 
  <!-- 申込内容確認ボタン -->
- <a href="{{ url('/entry/complete') }}" class="btn">申込</a>
+
+ <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+ <div class="btn-group me-2" role="group" aria-label="First group">
+ <form action="/entry/complete" method="POST">
+ @csrf
+ <input type="hidden" name="eventname" value="{{$event->id}}">
+ <button type="submit" class="btn">申込</button>
+ </form>
+ </div> 
 
 <!-- 戻るボタン -->
+<div class="btn-group me-2" role="group" aria-label="Second group">
 <a href="{{ url('/entry/summry/{id}') }}" class="btn">イベント詳細へ戻る</a>
 </div>
-
 </form>
-
 </body>
 </html>

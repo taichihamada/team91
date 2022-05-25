@@ -1,6 +1,14 @@
 /*
 ホーム画面全体
 ****/
+
+/* 全体を枠で囲む */
+body {
+    width: 100%;
+    border:20px solid #47a89c;
+    box-sizing:border-box;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -81,21 +89,8 @@
 イベント詳細
 ****/
 
-.form{
-  width: 100%;
-  margin:0 auto;
-  border: 1px solid #9c9c9c;
-  padding: 50px;
-  box-sizing: border-box;
-}
-
 .item{
-  margin-bottom: 20px;
-}
-
-.btn{
-  display: flex;
-  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .btn{
@@ -104,7 +99,9 @@
   font-size:16px;
   font-weight:bold;
   padding: 10px 20px;
-  margin: 0 800px;
+  margin: 10 800px;
+  text-align: left;
 }
+  
 
 

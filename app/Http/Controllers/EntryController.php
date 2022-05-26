@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Entry;
-
+use App\Models\User;
 use App\Models\Event;
+use Mail;
 
 class EntryController extends Controller
 {
@@ -39,5 +40,23 @@ class EntryController extends Controller
         // dd($request);
         $event = event::find($request->eventname);
         return view('entry.complete', ['event' => $event]);
+    }
+
+    public function send(Request $request,$id)  //メールの自動送信設定
+    {
+        $user_data = User::where('id',$id)->first();
+        Mail::send('entry.emailtext', [], function($data){
+                $data   ->to('team91919191@gmail.com')
+                //$data   ->to($user_data->email)
+                        ->subject('イベント申込完了');
+        });
+
+        return redict('/entry'); 
+    }
+
+    public function return(Request $request)
+    {
+        $event = event::find($request->id);
+        return view('entry.return', ['event' => $event]);
     }
 }

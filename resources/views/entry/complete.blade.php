@@ -30,12 +30,14 @@
     <p>{{$event->remarks}}</p>
  </div>
 
- <!-- 申込完了ボタン -->
+ <!-- 申込完了ボタン→次ページへ飛ぶ -->
+ <a href="{{url('/entry/return/'.$event->id)}}" class="btn">イベント申込完了</a>
 
-<a href="#" class="btn">申込完了</a>
+ <!-- 申込完了ボタン→メールを送信する -->
+<a href="{{url('/entry/complete/send/'.$event->user_id)}}" class="btn">申込完了</a>
 
 <!-- 戻るボタン -->
-<a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
+<a href="{{url('/entry')}}" class="btn">ホームへ戻る</a>
 
 </form>
 </body>

@@ -15,6 +15,7 @@
 <h1>イベント申込完了フォーム</h1>
 
 <h2>申込完了</h2>
+<img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60597e67bbb75114d0b66ec6_19.png" width="150px" height="150px" alt="画像">
  
  <!-- 名前 -->
  <div class="item">
@@ -30,14 +31,8 @@
     <p>{{$event->remarks}}</p>
  </div>
 
- <!-- 申込完了ボタン→次ページへ飛ぶ -->
- <a href="{{url('/entry/return/'.$event->id)}}" class="btn">イベント申込完了</a>
-
- <!-- 申込完了ボタン→メールを送信する -->
+ <!-- 申込完了ボタン -->
 <a href="{{url('/entry/complete/send/'.$event->user_id)}}" class="btn">申込完了</a>
-
-<!-- 戻るボタン -->
-<a href="{{url('/entry')}}" class="btn">ホームへ戻る</a>
 
 </form>
 </body>

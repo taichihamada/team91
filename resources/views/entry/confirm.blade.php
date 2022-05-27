@@ -12,12 +12,13 @@
 
 </head>
 <body>
-<h1>イベント申込確認フォーム</h1>
+  <h1>イベント申込確認フォーム</h1>
 
-<h2>申込内容</h2>
+  <h2>申込内容</h2>
+  <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/624bd4fb51d7e5589581b6c2_94.png" width="150px" height="150px" alt="画像">
 
- <!-- 申込イベント -->
- <div class="item">
+  <!-- 申込イベント -->
+  <div class="item">
     <p>{{$event->event_name}}</p>
     <p>{{$event->event_category}}</p>
     <p>{{$event->overview}}</p>
@@ -28,23 +29,27 @@
     <p>{{$event->period_end}}</p>
     <p>{{$event->user_id}}</p>
     <p>{{$event->remarks}}</p>
- </div>
+  </div>
 
- <!-- 申込内容確認ボタン -->
+  <!-- 申込内容確認ボタン -->
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group me-2" role="group" aria-label="First group">
+    <form action="/entry/complete" method="POST">
+    @csrf
+    <input type="hidden" name="eventname" value="{{$event->id}}">
+    <button type="submit" class="btn">申込</button>
+    </form>
+  </div> 
 
- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
- <div class="btn-group me-2" role="group" aria-label="First group">
- <form action="/entry/complete" method="POST">
- @csrf
- <input type="hidden" name="eventname" value="{{$event->id}}">
- <button type="submit" class="btn">申込</button>
- </form>
- </div> 
+  <!-- イベント詳細へ戻るボタン -->
+  <div class="btn-group me-2" role="group" aria-label="Second group">
+    <a href="{{ url('/entry/summry/{id}') }}" class="btn">イベント詳細へ戻る</a>
+  </div>
 
-<!-- 戻るボタン -->
-<div class="btn-group me-2" role="group" aria-label="Second group">
-<a href="{{ url('/entry/summry/{id}') }}" class="btn">イベント詳細へ戻る</a>
-</div>
-</form>
+  <!-- 戻るボタン -->
+  <div class="btn-group me-2" role="group" aria-label="third group">
+    <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
+  </div>
+
 </body>
 </html>

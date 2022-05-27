@@ -17,6 +17,7 @@ class EntryController extends Controller
         * @param Request $request
         * @return Response
         */
+
     public function index(Request $request)
     {
         $events = event::orderBy('created_at', 'desc')->get();
@@ -24,17 +25,20 @@ class EntryController extends Controller
             'events' => $events,
         ]);
     }
+
     public function summry(Request $request)
     {
         $event = event::find($request->id);
         return view('entry.summry', ['event' => $event]);
     }
+
     public function confirm(Request $request,$id)
     {  
         $event = event::find($id);
         // dd($event);
         return view('entry.confirm', ['event' => $event]);
     }
+
     public function complete(Request $request)
     {
         // dd($request);
@@ -50,8 +54,7 @@ class EntryController extends Controller
                 //$data   ->to($user_data->email)
                         ->subject('イベント申込完了');
         });
-
-        return redict('/entry'); 
+        return redirect('/entry/return'); 
     }
 
     public function return(Request $request)

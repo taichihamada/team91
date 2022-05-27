@@ -11,6 +11,7 @@
 </head>
 <body>
     <h1>イベント詳細</h1>
+    <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/610e354b42d21a7b18a9270a_41.png" width="150px" height="150px" alt="画像">
     <div class="item">
       <p>{{$event->event_name}}</p>
       <p>{{$event->event_category}}</p>

@@ -33,15 +33,37 @@
 
             <!-- ホーム画面 検索 -->
             <div class="home">
-            <form action="/entry/summry" method="GET">
-            <input type="search" name="search" placeholder="検索したいイベントを入力" style="width: 500px;margin-right:auto;">
-            <input type="submit" name="submit" value="検索">
+              <form method="get" action="">
+              <select id="blood" name="">
+                <option value="">カテゴリーを選んでください
+                <option value="A型">A型
+              </select>
+              <input type="button" value="絞り込む">
+              <input type="button" value="すべて表示">
+                @foreach($events as $event)
+                  <tr>
+                      <td>{{$event->id}}</td>
+                      <td><a href="/entry/summry/{{$event->id}}">{{$event->event_category}}</a></td>
+                      <td></td>
+                  </tr>
+                @endforeach  
             </form>
             </div>
-
+        
             <!-- ホーム画面 イベント一覧 -->
+            <div class="home">
             <h2>イベント一覧</h2>
-            <table class="table">
+            <!-- ホーム画面　イベント一覧 アイコン -->
+            <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+            <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60743cf651fa45e66a876952_illust_college_student.png" width="150px" height="150px" alt="画像">
+            <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-filled.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+            <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60790bb70b611629c6b164e7_62.png" width="150px" height="150px" alt="画像">
+            <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+            <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/61bf09b6c69c24245d6457d3_4.png" width="150px" height="150px" alt="画像">
+            <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-filled.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+            <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60a5021cf3c27c4256d87618_70.png" width="150px" height="150px" alt="画像">
+            <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+              <table class="table">
                 <tr>
                 <th>id</th>
                 <th>タイトル</th>
@@ -59,6 +81,7 @@
                 </tr>
                 @endforeach
             </table>
+</div>
     </div>
 </body>
 </html>

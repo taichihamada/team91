@@ -21,8 +21,7 @@
         @else
         <form action="/user/Register" method="post">
         @endif
-            @csrf
-            <input  class="form-control" type="text" name="id" value={{$user['id']}} hidden>
+            @csrf 
             <h6>名前</h6><div name="name" class="shadow p-3 mb-3 bg-light rounded">{{$user['name']}}</div>
             <h6>電話番号</h6><div name="phone" class="shadow p-3 mb-3 bg-light rounded">{{$user['phone']}}</div>
             <h6>メールアドレス</h6><div name="email" class="shadow p-3 mb-3 bg-light rounded">{{$user['email']}}</div>

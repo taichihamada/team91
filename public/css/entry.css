@@ -1,6 +1,14 @@
 /*
-全体
+ホーム画面全体
 ****/
+
+/* 全体を枠で囲む */
+body {
+    width: 100%;
+    border:20px solid #47a89c;
+    box-sizing:border-box;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -20,7 +28,7 @@
  
 
 /*
-メイン
+ホーム画面 メイン
 ****/
 .main .main-header {
     padding: 20px;
@@ -28,18 +36,18 @@
 }
  
 .main .main-header h1 {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 30px;
+    line-height: 30px;
     font-weight: bold;
     margin-bottom: 0;
     text-align: center;
 }
 
 .main .main-header h1 {
-    padding: 0.5em 1em;
+    padding: 0.3em 1em;
     margin: 2em 0;
     font-weight: bold;
-    border: solid 3px #000000;
+    border: solid 3px #008080;
 }
 .main .main-header h1 p {
     margin: 0; 
@@ -52,33 +60,48 @@
 }
 
 .home h2 {
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    margin-bottom: 2;
+    text-align: left;
+    color: #008080;
+}
+
+.home h3 {
     font-size: 20px;
     line-height: 20px;
     font-weight: bold;
-    margin-bottom: 0;
+    margin-bottom: 2;
     text-align: left;
 }
+
+/*
+ホーム画面 検索
+****/
  
-.home h3 {
-    width: 70px;
-    font-size: 20px;
-    line-height: 20px;
-    padding: 0.5em 0.5em;
-    margin: 2em 0;
-    font-weight: bold;
-    border: solid 3px #000000;
-}
-.home h3 {
-    margin-left: auto;
+.home form {
+    padding: 2em 2em;
+    margin: 0.5em 0;
 }
 
-.home h4 {
-    font-size: 20px;
-    line-height: 20px;
-    font-weight: bold;
-    margin-bottom: 0;
-    text-align: left;
+/*
+イベント詳細
+****/
+
+.item{
+  margin-bottom: 30px;
 }
 
+.btn{
+  background: #008080;
+  color: white;
+  font-size:16px;
+  font-weight:bold;
+  padding: 10px 20px;
+  margin: 10 800px;
+  text-align: left;
+}
+  
 
 

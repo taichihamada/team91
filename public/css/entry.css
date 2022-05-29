@@ -1,6 +1,4 @@
-/*
-ホーム画面全体
-****/
+/* ホーム画面全体 */
 
 /* 全体を枠で囲む */
 body {
@@ -27,9 +25,7 @@ body {
 }
  
 
-/*
-ホーム画面 メイン
-****/
+/* ホーム画面 メイン */
 .main .main-header {
     padding: 20px;
     border-bottom: 1px solid #eef;
@@ -76,18 +72,28 @@ body {
     text-align: left;
 }
 
-/*
-ホーム画面 検索
-****/
+/* イベント一覧文字 */
+.home th {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    margin-bottom: 2;
+    text-align: left;
+    color: #008080;
+}
+
+/* ホーム画面 検索 */
  
 .home form {
     padding: 2em 2em;
     margin: 0.5em 0;
 }
 
-/*
-イベント詳細
-****/
+.home .search1 {
+    margin: 10px;
+}
+
+/* イベント詳細 */
 
 .item{
   margin-bottom: 30px;

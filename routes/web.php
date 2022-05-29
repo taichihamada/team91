@@ -71,9 +71,7 @@ Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 
 Route::get('/event/entrylist',[EventController::class,'entrylist']);
 
-Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index']);
+Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index'])->name('entry');
 Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
 Route::get('/entry/confirm/{id}', [App\Http\Controllers\EntryController::class, 'confirm']);
 Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
-Route::get('/entry/complete/send/{id}', [App\Http\Controllers\EntryController::class, 'send']);
-Route::get('/entry/return' ,[App\Http\Controllers\EntryController::class, 'return']);

@@ -31,7 +31,7 @@
     <p>{{$event->remarks}}</p>
   </div>
 
-  <!-- 申込内容確認ボタン -->
+  <!-- 申込ボタン -->
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
     <form action="/entry/complete" method="POST">
@@ -43,7 +43,7 @@
 
   <!-- イベント詳細へ戻るボタン -->
   <div class="btn-group me-2" role="group" aria-label="Second group">
-    <a href="{{ url('/entry/summry/{id}') }}" class="btn">イベント詳細へ戻る</a>
+    <a href="{{ url('/entry/summry/' .$event->id) }}" class="btn">イベント詳細へ戻る</a>
   </div>
 
   <!-- 戻るボタン -->

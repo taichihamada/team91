@@ -19,27 +19,30 @@ class EntryController extends Controller
         * @return Response
         */
 
+    // ホーム画面
     public function index(Request $request)
     {
         $event_category_id=$request->event_category_id;
         if(empty($event_category_id)){
-            $events = event::orderBy('created_at', 'desc')->get(); 
+            $events = Event::orderBy('created_at', 'desc')->get(); 
         } else {
-            $events = event::where('event_category', $event_category_id)->orderBy('created_at', 'desc')->get();
+            $events = Event::where('event_category', $event_category_id)->orderBy('created_at', 'desc')->get();
         }
-        $all_events = event::orderBy('created_at', 'desc')->get();
+        $all_events = Event::orderBy('created_at', 'desc')->get();
         return view('entry.index', [
             'events' => $events,
             'all_events' => $all_events,
         ]);
     }
 
+    // イベント詳細画面
     public function summry(Request $request)
     {
         $event = event::find($request->id);
         return view('entry.summry', ['event' => $event]);
     }
 
+    // イベント申込確認画面
     public function confirm(Request $request,$id)
     {  
         $event = event::find($id);
@@ -47,15 +50,22 @@ class EntryController extends Controller
         return view('entry.confirm', ['event' => $event]);
     }
 
+    // イベント申込完了画面
     public function complete(Request $request)
     {
         // ログインしているユーザーのIDを取得して、ユーザーIDでusersテーブルから取得する
-        // $user_id = Auth::id();
-        // $user_date = User::where('id',$user_id)->first();
-        Mail::send('entry.emailtext', [], function($data){
-                $data   ->to('team91919191@gmail.com')
-                //$data   ->to($user_data->email)
-                        ->subject('イベント申込完了');
+        $user = Auth::user();
+        // ログイン機能ができたら消す
+        $user = User::find(1);
+        $user_date = User::where('id',$user->id)->first();
+        // dd($user_date);
+        // Mail::send('entry.emailtext', [], function($data){    // メールの自動送信設定  
+        //         $data   ->to($user_date->email)
+        //                 ->subject('イベント申込完了');
+        // });
+        Mail::send('entry.emailtext', ['user' => $user_date], function ($m) use ($user) {
+            $m->to($user->email)
+              ->subject('イベント申込完了');
         });
         return view('entry.complete');
     }

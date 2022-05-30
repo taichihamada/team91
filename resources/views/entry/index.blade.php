@@ -18,6 +18,12 @@
 <div class="container">
         <div class="main">
         <div class="main-header">
+          <!-- ログアウトボタン -->
+          <a href="{{ url('/entry') }}" class="btn">ログアウト</a>
+          <!-- ユーザー一覧へボタン(植田さんのユーザー一覧画面へ遷移) -->
+          <a href="{{ url('user/userlist') }}" class="btn">ユーザー一覧へ</a>
+          <!-- イベント一覧へボタン(濱田さんのイベント一覧画面へ遷移) -->
+          <a href="{{ url('event/top') }}" class="btn">イベント一覧へ</a>
                 <h1>ホーム</h1>
             </div>
 

@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 
 
@@ -37,14 +38,16 @@ class LoginController extends Controller
      */
 
 
-public function authenticate(LoginFormRequest $request){
-
+    public function authenticate(LoginFormRequest $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($credentials)) {
+
+        if (Auth::attempt($credentials)) 
+        {
             $request->session()->regenerate();
             $role = auth()->user()->userAuthority;
             
@@ -58,17 +61,15 @@ public function authenticate(LoginFormRequest $request){
             }
         }
 
-                return redirect('login')->withErrors([
+            return redirect('login')->withErrors([
                     'login_errors' => 'メールアドレスかパスワードが間違っています。',
                 ]);
+    }
 
-  
-        }
-
-        public function index()   //メールアドレス入力フォーム表示
-        {
-            return view('login.index');
-        }
+    public function index()   //メールアドレス入力フォーム表示
+    {
+        return view('login.index');
+    }
 
 
     public function send(Request $request)  
@@ -88,8 +89,6 @@ public function authenticate(LoginFormRequest $request){
         $user->created_at_token=date('Y-m-d H:i:s');//リセットトークン発行時間の更新
         $user->save(); //DBに保存
         
-
-
            mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
            ->send(new ContactReply($token));
         
@@ -97,7 +96,7 @@ public function authenticate(LoginFormRequest $request){
     
     }
 
-    //メールに添付のパスワード再発行URL画面を表示
+        //メールに添付のパスワード再発行URL画面を表示
     public function posts(Request $request,$token)
     {   
        
@@ -135,32 +134,32 @@ public function authenticate(LoginFormRequest $request){
        
        // トークンが一致しない場合、エラーメッセージが出る
        if (is_null($user)) {
-        return redirect()->back()->with('message','もう一度メールを再発行してください。');
+       return redirect()->back()->with('message','もう一度メールを再発行してください。');
        }
        $user->password = Hash::make($request['password']);
        $user->save();
 
             return view('login.login');
-        }
-
-
-    /**
- * ユーザーをアプリケーションからログアウトさせる
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Illuminate\Http\Response
- */
-public function logout(Request $request)
-{
-    Auth::logout();
-
-    $request->session()->invalidate();
-
-    $request->session()->regenerateToken();
-
-    return redirect()->route('login.login');
-}
     }
+
+
+        /**
+     * ユーザーをアプリケーションからログアウトさせる
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login.login');
+    }
+}
 
 
 

@@ -23,10 +23,10 @@
         <!-- Styles -->
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body class="login">
     <div style="width: 500px; text-align:center; margin: 100px auto;">
-        <h3>イベント申し込みサイト</h3><br>
-        <form class="login" method="POST"  action="{{route('authenticate') }}">
+        <h3 class="heading">イベント申し込みサイト</h3><br>
+        <form method="POST"  action="{{route('authenticate') }}">
             @csrf
 
                     @if ($errors->any())
@@ -39,16 +39,23 @@
                         </div>
                     @endif
                     
-            <div class="form-group">
-                <input class="form-control" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
-                <input class="form-control" type="text" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>
-                <button type="submit" class="btn btn-secondary">ログイン</button>
-            </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
+                </div>
+                <div class="form-group">
+                    <input class="form-control form-control-lg" type="password" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-dark">ログイン</button>
+                </div>
+        
+                <div class="contactLink">
+                    <div class="contactLink" style="text-align:center;">
+                        <font size="2"><a href="{{ route('index') }}" class="text-dark"> パスワードをリセットする </a></font>
+                    </div>
+                </div>
         </form>
-        <div class="contactLink">
-            <div class="contactLink" style="text-align:center;">
-                <font size="2"><a href="{{ route('index') }}"> パスワードをリセットする </a></font>
-            </div>
-        </div>
+    </div>
     </body>
 </html>

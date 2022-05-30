@@ -23,8 +23,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     </head>
-    <body>
-        <div style="width: 800px; padding: 80px; margin: 100px auto;  border: 1px solid #333333; text-align:center;">
+    <body class="index">
+        <div class="inner" style="width: 800px; padding: 80px; margin: 100px auto;  border: 1px solid #333333; text-align:center;">
             <h4>パスワード再発行メール送信フォーム</h4><hr><br>
             <font size="2">ご登録いただいてるメールアドレスを入力の上、「送信ボタン」を押してください。<br />
             パスワード再設定用URLが記載されたメールをお送りします。<br /></font><br>

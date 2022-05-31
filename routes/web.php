@@ -65,7 +65,7 @@ Route::post('/event/registerConfirm',[EventController::class,'registerConfirm'])
 Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
 
 Route::get('/event/update/{id}',[EventController::class,'update']);
-Route::post('/event/updateConfirm',[EventController::class,'updateconfirm']);
+Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
 
 Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 

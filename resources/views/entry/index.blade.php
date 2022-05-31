@@ -20,7 +20,7 @@
           <div class="main-header">
           <div class="button01">
           <!-- ログアウトボタン -->
-          <a href="{{ url('/entry') }}" class="btn">ログアウト</a>
+          <a href="{{ url('/logout') }}" class="btn">ログアウト</a>
           </div>
           <!-- ユーザー一覧へボタン(植田さんのユーザー一覧画面へ遷移) -->
           <a href="{{ url('/user/list') }}" class="btn">ユーザー一覧へ</a>

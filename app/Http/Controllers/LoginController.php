@@ -74,13 +74,18 @@ class LoginController extends Controller
 
     public function send(Request $request)  
     {
-        $this->validate($request, ['email' => 'required|email']);
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email'
+        ]);
+        
+        //バリデーション
+        if ($validator->fails()) {
+            return redirect()->back()->with('check','メールアドレスを入力してください。');
+        }
 
         $user = User::where('email','=',$request->email)->first();
-        
-
         if (is_null($user)) {
-            return redirect()->back()->with('message','メールアドレスが存在しません。');
+            return redirect()->back()->with('messages','メールアドレスが存在しません。');
         }
 
         $token = Str::random(32);//トークン生成
@@ -100,6 +105,14 @@ class LoginController extends Controller
     public function posts(Request $request,$token)
     {   
        
+        $user = User::where('reset_token','=',$request->token)->first();
+       
+        // トークンが一致しない場合、エラーメッセージが出る
+        if (is_null($user)) {
+        return view('login.error');
+       }
+
+
         $createTime = User::where('reset_token',$request->token)->first();
        
         //数値型になおす

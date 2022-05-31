@@ -41,7 +41,7 @@
                 <div class="mb-3 row">
                         <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">新しい<br>パスワード</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="password"><br>
+                        <input type="password" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="password"><br>
                     </div>
                 </div>
                         <div class="mb-3 row">    

@@ -32,9 +32,15 @@
             <form action="{{ url('/login/posts') }}" method="POST">
             @csrf
 
-            @if(session('message'))
+            @if(session('messages'))
                 <div class="alert alert-danger">
-                {{ session('message') }}
+                {{ session('messages') }}
+                </div>
+            @endif
+
+            @if(session('check'))
+                <div class="alert alert-danger">
+                {{ session('check') }}
                 </div>
             @endif
 

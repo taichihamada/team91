@@ -11,7 +11,7 @@
         <title>login</title>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ asset('js/login.js') }}" defer></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,7 +43,9 @@
                     <input class="form-control form-control-lg" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="password" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>
+                    <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>
+                    <input type="checkbox" id="password-check">
+
                 </div>
 
                 <div>

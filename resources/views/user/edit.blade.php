@@ -30,6 +30,10 @@
                 <button type="submit" class="btn btn-secondary">更新</button>
             </div>
         </form>
+        <a href="/user/delete" class="btn btn-secondary">削除</a>
+    </div>
+    <div class="a-user">
+    <a href="/user/list">ユーザー一覧画面へ</a>
     </div>
 </body>
 

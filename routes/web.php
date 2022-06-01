@@ -43,21 +43,24 @@ Route::post('/login/update', [LoginController::class,'update']);
 Route::get('/logout', [LoginController::class,'logout']);
 
 // 新規ユーザー登録画面
-Route::get('/user/register', [Usercontroller::class, 'register'])->name('register');
+Route::get('/user/register', [Usercontroller::class, 'register']);
 // 登録ボタン（このボタンでユーザー情報をデータベースに登録）
 Route::post('/user/Register', [Usercontroller::class, 'userRegister']);
 // 確認画面
-Route::post('/user/show', [Usercontroller::class, 'show'])->name('show');
+Route::post('/user/show', [Usercontroller::class, 'show']);
 // 登録されたユーザーを一覧表示
-Route::get('/user/list', [Usercontroller::class, 'userlist'])->name('userlist');
+Route::get('/user/list', [Usercontroller::class, 'userlist']);
 // 誰の情報を更新するかを選択する更新ボタン
-Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('edit');
+Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('user_edit');
 // 更新画面からの更新ボタン
-Route::post('/user/edit', [Usercontroller::class, 'useredit'])->name('useredit');
+Route::post('/user/edit', [Usercontroller::class, 'useredit']);
 // 検索ボタン
-Route::get('/user/serch', [Usercontroller::class, 'serch'])->name('serch');
-Route::get('/event/top',[EventController::class,'top'])->name('top');
-
+Route::get('/user/serch', [Usercontroller::class, 'serch']);
+Route::get('/event/top',[EventController::class,'top']);
+// ユーザー削除・確認画面
+Route::get('/user/delete', [Usercontroller::class, 'deleteconfirm']);
+// ユーザー削除機能
+Route::post('/user/delete/all', [Usercontroller::class, 'userdelete']);
 
 Route::get('/event/register',[EventController::class,'register'])->name('register');
 Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);

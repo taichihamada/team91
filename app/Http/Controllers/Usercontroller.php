@@ -43,6 +43,7 @@ class Usercontroller extends Controller
     public function edit(Request $request){
 
         $user = User::where('id', '=', $request->id)->first();
+        $request->session()->put('user_data', $user);
         return view ('user/edit', compact('user'));
     }
 
@@ -52,7 +53,7 @@ class Usercontroller extends Controller
         $data = $request->session()->get('user_data');
         if($request->action){
             $user = User::where('id', '=', $data['id'])->first();
-            return redirect()->route('edit', ['id' => $user]);
+            return redirect()->route('user_edit', ['id' => $user]);
         }
         $user = User::where('id', '=', $data['id'])->first();
         $user->name = $data['name'];
@@ -105,5 +106,24 @@ class Usercontroller extends Controller
             $request->session()->put('user_data', $user);
             return view ('user/confirm', compact('user', 'Duser'));
         }
+    }
+
+    // ユーザー削除・確認画面
+    public function deleteconfirm(Request $request){
+        $data = $request->session()->get('user_data');
+        $user = User::where('id', '=', $data['id'])->first();
+        return view ('user/delete', compact('user'));
+    }
+
+    // ユーザー削除機能
+        public function userdelete(Request $request){
+        $data = $request->session()->get('user_data');
+        $user = User::where('id', '=', $data['id'])->first();
+        if($request->action){
+            return redirect()->route('user_edit', ['id' => $user]);
+            exit;
+        }
+        $user->delete();
+        return redirect ('user/list');
     }
 }

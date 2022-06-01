@@ -61,38 +61,38 @@ Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index'])->na
 Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
 Route::get('/entry/confirm/{id}', [App\Http\Controllers\EntryController::class, 'confirm']);
 Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
-Route::group(['middleware'=>['auth','can:admin-only']],function(){
+// // Route::group(['middleware'=>['auth','can:admin-only']],function(){
 
-    // 登録されたユーザーを一覧表示
-    Route::get('/user/list', [Usercontroller::class, 'userlist'])->name('userlist');
-    // 誰の情報を更新するかを選択する更新ボタン
-    Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('edit');
-    // 更新画面からの更新ボタン
-    Route::post('/user/edit', [Usercontroller::class, 'useredit'])->name('useredit');
-    // 検索ボタン
-    Route::get('/user/serch', [Usercontroller::class, 'serch'])->name('serch');
-    Route::get('/event/top',[EventController::class,'top'])->name('top');
+//     // 登録されたユーザーを一覧表示
+//     Route::get('/user/list', [Usercontroller::class, 'userlist'])->name('userlist');
+//     // 誰の情報を更新するかを選択する更新ボタン
+//     Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('edit');
+//     // 更新画面からの更新ボタン
+//     Route::post('/user/edit', [Usercontroller::class, 'useredit'])->name('useredit');
+//     // 検索ボタン
+//     Route::get('/user/serch', [Usercontroller::class, 'serch'])->name('serch');
+//     Route::get('/event/top',[EventController::class,'top'])->name('top');
 
 
-    Route::get('/event/register',[EventController::class,'register'])->name('register');
-    Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
+//     Route::get('/event/register',[EventController::class,'register'])->name('register');
+//     Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
 
-    Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
+//     Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
 
-    Route::get('/event/update/{id}',[EventController::class,'update']);
-    Route::post('/event/updateConfirm',[EventController::class,'updateconfirm']);
+//     Route::get('/event/update/{id}',[EventController::class,'update']);
+//     Route::post('/event/updateConfirm',[EventController::class,'updateconfirm']);
 
-    Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
+//     Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 
-    Route::get('/event/entrylist',[EventController::class,'entrylist']);
-});
+//     Route::get('/event/entrylist',[EventController::class,'entrylist']);
+// });
 
-Route::group(['middleware'=>['auth','can:user-higher']],function(){
+// // Route::group(['middleware'=>['auth','can:user-higher']],function(){
 
-    Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index']);
-    Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
-    Route::get('/entry/confirm/{id}', [App\Http\Controllers\EntryController::class, 'confirm']);
-    Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
-    Route::get('/entry/complete/send/{id}', [App\Http\Controllers\EntryController::class, 'send']);
-    Route::get('/entry/return' ,[App\Http\Controllers\EntryController::class, 'return']);
-});
+//     // Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index']);
+//     // Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
+//     // Route::get('/entry/confirm/{id}', [App\Http\Controllers\EntryController::class, 'confirm']);
+//     // Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
+//     // Route::get('/entry/complete/send/{id}', [App\Http\Controllers\EntryController::class, 'send']);
+//     // Route::get('/entry/return' ,[App\Http\Controllers\EntryController::class, 'return']);
+// });

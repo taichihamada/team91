@@ -7,32 +7,17 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href="/css/entry.css" rel="stylesheet">
-
-    <title>イベント申込完了フォーム</title>
-
+    <title>イベント申込完了</title>
 </head>
 <body>
-<h1>イベント申込完了フォーム</h1>
 
-<h2>申込完了</h2>
-<img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60597e67bbb75114d0b66ec6_19.png" width="150px" height="150px" alt="画像">
- 
- <!-- 名前 -->
- <div class="item">
-   <p>{{$event->event_name}}</p>
-   <p>{{$event->event_category}}</p>
-    <p>{{$event->overview}}</p>
-    <p>{{$event->event_date}}</p>
-    <p>{{$event->place}}</p>
-    <p>{{$event->price}}</p>
-    <p>{{$event->period_start}}</p>
-    <p>{{$event->period_end}}</p>
-    <p>{{$event->user_id}}</p>
-    <p>{{$event->remarks}}</p>
- </div>
+<h2>イベント申込が完了しました</h2>
+<img src="https://www.shoshinsha-design.com/wp-content/uploads/2020/04/%E3%82%AF%E3%82%99%E3%83%83%E3%83%88%E3%82%99%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3-%E6%89%8B-1024x794.png" width="200px" height="200px" alt="画像">
 
- <!-- 申込完了ボタン -->
-<a href="{{url('/entry/complete/send/'.$event->user_id)}}" class="btn">申込完了</a>
+<!-- 戻るボタン -->
+<a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
+
+<h3>イベント申込完了メールが送信されているのでご確認ください。</h3>
 
 </form>
 </body>

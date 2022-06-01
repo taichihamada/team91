@@ -58,15 +58,23 @@ class EntryController extends Controller
         // ログイン機能ができたら消す
         $user = User::find(1);
         $user_date = User::where('id',$user->id)->first();
-        // dd($user_date);
-        // Mail::send('entry.emailtext', [], function($data){    // メールの自動送信設定  
-        //         $data   ->to($user_date->email)
-        //                 ->subject('イベント申込完了');
-        // });
         Mail::send('entry.emailtext', ['user' => $user_date], function ($m) use ($user) {
             $m->to($user->email)
               ->subject('イベント申込完了');
         });
         return view('entry.complete');
     }
+    
+    // ユーザーを登録する
+    public function login(Request $request){
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect('entry/index');
+    }
+
 }

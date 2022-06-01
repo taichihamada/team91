@@ -52,6 +52,10 @@ Route::get('/', function () {
     Route::post('/user/show', [Usercontroller::class, 'show'])->name('show');
 
 
+Route::get('/event/update/{id}',[EventController::class,'update']);
+Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
+
+
 
 Route::group(['middleware'=>['auth','can:admin-only']],function(){
 

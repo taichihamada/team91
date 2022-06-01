@@ -36,7 +36,8 @@
   <div class="btn-group me-2" role="group" aria-label="First group">
     <form action="/entry/complete" method="POST">
     @csrf
-    <input type="hidden" name="eventname" value="{{$event->id}}">
+    <input type="hidden" name="event_id" value="{{$event->id}}">
+    <input type="hidden" name="event_name" value="{{$event->name}}">
     <button type="submit" class="btn">申込</button>
     </form>
   </div> 

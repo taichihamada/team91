@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator; 
 use App\Mail\ContactReply; 
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rule;
 
 
 
@@ -94,7 +92,7 @@ class LoginController extends Controller
         $user->created_at_token=date('Y-m-d H:i:s');//リセットトークン発行時間の更新
         $user->save(); //DBに保存
         
-        // mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
+        //mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
         mail::to($request->email)  //メールの自動送信設定 $request->email
         ->send(new ContactReply($token));
         
@@ -163,15 +161,10 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function logout(Request $request)
+    protected function logout()
     {
         Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect()->route('login.login');
+        return redirect('login');
     }
 }
 

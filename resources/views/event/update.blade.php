@@ -80,6 +80,7 @@
         <div class="form-group" style="text-align:center;">
                 <a href="/event/eventDelete/{{$event->id}}"><button type="button" class="btn btn-secondary">削除</button></a>
         </div>
+        <input type="hidden" name="id" value="{{$event->id}}">
     </form>
 </div>
 

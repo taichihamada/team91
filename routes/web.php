@@ -21,6 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 //ログイン画面表示
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 //認証処理

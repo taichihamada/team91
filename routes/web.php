@@ -44,8 +44,6 @@ Route::get('/', function () {
 
 
 
-Route::get('/event/update/{id}',[EventController::class,'update']);
-Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
 
 
 
@@ -75,11 +73,11 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
     Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
 
     Route::get('/event/update/{id}',[EventController::class,'update']);
-    Route::post('/event/updateConfirm',[EventController::class,'updateconfirm']);
+    Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
 
     Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 
-    Route::get('/event/entrylist',[EventController::class,'entrylist']);
+    Route::get('/event/entrylist/{id}',[EventController::class,'entrylist']);
 });
 
 Route::group(['middleware'=>['auth','can:user-higher']],function(){

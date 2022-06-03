@@ -25,11 +25,11 @@
 <body>
 
 <div style="text-align:center;">
-    <h4>イベント登録確認 ID:{{$event->id}}</h4>
+    <h4>イベント登録確認 ID:{{$event['id']}}</h4>
 </div>
 
 <div style="width: 400px; text-align:left; margin: 10px auto;">
-    <form action="/event/eventRegister" method="post">
+    <form action="/event/updateRegister" method="post">
         @csrf
         <div class="form-group">
             <p>イベント名：{{$event['event_name']}}</p>
@@ -58,7 +58,7 @@
 
             <button type="submit" class="btn btn-secondary" name="send">登録</button>
             <button type="submit" class="btn btn-secondary" name="return">戻る</button>
-
+            <input type="hidden" name="id" value="{{$event['id']}}">
             </div>
         </div>
     </form>

@@ -35,17 +35,23 @@
 
         <div class="main">
             <div style="text-align:center;">
-                <h4>エントリー一覧</h4>
+                <h4>{{$event->id}}{{$event->event_name}}エントリー一覧</h4>
             </div>
 
             <div class="entryList">
                 <table class="table" border="3">
                     <tr>
-                        <th>イベントエントリー</th>
+                        <th>申込番号</th>
+                        <th>名前</th>
+                        <th>メールアドレス</th>
+                        <th>申込日時</th>
                     </tr>
                     @foreach($entry as $value)
                         <tr>
                             <td>{{$value->id}}</td>
+                            <td>{{$value->name}}</td>
+                            <td>{{$value->email}}</td>
+                            <td>{{$value->created_at}}</td>
                         </tr>
                     @endforeach
                 </table>

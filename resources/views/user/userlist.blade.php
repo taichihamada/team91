@@ -9,32 +9,46 @@
         <title>ユーザー一覧画面</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <!-- 独自のCSSを反映する
-        <link rel="stylesheet" href="{{asset('css/user.css')}}"> -->
+        <!-- 独自のCSSを反映する -->
+        <link rel="stylesheet" href="{{asset('css/user.css')}}">
 
 </head>
 <body>
+<div style="width: 800px; text-align:center; margin: 100px auto;">
     <div>
-        <h4>ユーザー一覧画面</h4>
-        <div style="text-align:left;">
+        <h4 class="users-title">ユーザー一覧画面</h4>
+        <div class="link">
+        <p>他画面へのリンク</p>
+        <a href="/user/register">ユーザー新規登録</a>
+        <a href="/event/register">イベント登録</a>
+        <a href="/entry">イベント一覧</a>
+        <a href="/user/list">ユーザー一覧画面</a>
+        <a href="/logout">ログアウト</a>
+        </div>
+
+        <h4 class="title">ユーザー一覧</h4>
+        <div class="serch" style="text-align:right;">
+        <p>ユーザーを検索して絞り込み表示</p>
             <form action="/user/serch" method="GET">
-                <input class="form-control" type="text" name="keyword" placeholder="名前・電話番号・メールアドレスで検索" style="width: 500px;margin-right:auto;">
-                <button type="submit" style="align=left">検索</button>
+                <input class="form-control" type="text" name="keyword" placeholder="名前・電話番号・メールアドレスで検索" style="width: 500px;">
+                <button type="submit" style="align=left" class="btn btn-secondary">検索</button>
             </form>
         </div>
-        <a href="/user/register">ユーザー新規登録画面へ</a>
-
+        <div class="users">
         @forelse($user as $value)
         <table>
-            <tr>
-                <td>・{{$value->name}} さん</td>
-                <td><button onclick="location.href='/user/edit/{{$value->id}}'" style="margin-left:auto" >更新</button></td>
-            </tr>
+            <div>
+                <td class="name" style="padding-top: 30px;">{{$value->name}} さん<p class="tdp"></p></td>
+                <td class="button"><button onclick="location.href='/user/edit/{{$value->id}}'" class="btn btn-secondary btn-sm">更新</button></td>
+            </div>
         </table>
         @empty
             <td>No data</td>
         @endforelse
+        </div>
+
     </div>
+</div>
 </body>
 
 </html>

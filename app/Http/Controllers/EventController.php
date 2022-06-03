@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Entry;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -111,7 +112,7 @@ class EventController extends Controller
         $event->price = $request->price;
         $event->period_start = $request->period_start;
         $event->period_end = $request->period_end;
-        //TODO: $event->user_id = $request->user_id;
+        $event->user_id = Auth::id();
         $event->status = $request->status;
         $event->remarks = $request->remarks;
         $event->save();
@@ -205,11 +206,15 @@ class EventController extends Controller
 
     public function entrylist(Request $request){
 
-        $entry = Entry::where('id','=', $request->id)->get();
+        $event = Event::where('id','=', $request->id)->first();
+        $entry = Entry::Join('users', 'entries.user_id', '=', 'users.id')
+            ->where('event_id',$request->id)
+            ->select('entries.id','users.name','users.email','entries.created_at')
+            ->get();
 
         return view('event.entrylist')->with([
             'entry' => $entry,
-            
+            'event' => $event,
 
         ]);
     }

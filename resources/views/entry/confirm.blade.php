@@ -14,8 +14,8 @@
 <body>
   <h1>イベント申込確認フォーム</h1>
 
-  <h2>申込内容</h2>
   <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/624bd4fb51d7e5589581b6c2_94.png" width="150px" height="150px" alt="画像">
+  <h2>申込内容</h2>
 
   <!-- 申込イベント -->
   <div class="item">
@@ -31,19 +31,20 @@
     <p>{{$event->remarks}}</p>
   </div>
 
-  <!-- 申込内容確認ボタン -->
+  <!-- 申込ボタン -->
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group me-2" role="group" aria-label="First group">
     <form action="/entry/complete" method="POST">
     @csrf
-    <input type="hidden" name="eventname" value="{{$event->id}}">
+    <input type="hidden" name="event_id" value="{{$event->id}}">
+    <input type="hidden" name="event_name" value="{{$event->name}}">
     <button type="submit" class="btn">申込</button>
     </form>
   </div> 
 
   <!-- イベント詳細へ戻るボタン -->
   <div class="btn-group me-2" role="group" aria-label="Second group">
-    <a href="{{ url('/entry/summry/{id}') }}" class="btn">イベント詳細へ戻る</a>
+    <a href="{{ url('/entry/summry/' .$event->id) }}" class="btn">イベント詳細へ戻る</a>
   </div>
 
   <!-- 戻るボタン -->

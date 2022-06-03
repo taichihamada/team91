@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator; 
 use App\Mail\ContactReply; 
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
@@ -37,14 +36,16 @@ class LoginController extends Controller
      */
 
 
-public function authenticate(LoginFormRequest $request){
-
+    public function authenticate(LoginFormRequest $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        if (Auth::attempt($credentials)) {
+
+        if (Auth::attempt($credentials)) 
+        {
             $request->session()->regenerate();
             $role = auth()->user()->userAuthority;
             
@@ -58,28 +59,31 @@ public function authenticate(LoginFormRequest $request){
             }
         }
 
-                return redirect('login')->withErrors([
+            return redirect('login')->withErrors([
                     'login_errors' => 'メールアドレスかパスワードが間違っています。',
                 ]);
+    }
 
-  
-        }
-
-        public function index()   //メールアドレス入力フォーム表示
-        {
-            return view('login.index');
-        }
+    public function index()   //メールアドレス入力フォーム表示
+    {
+        return view('login.index');
+    }
 
 
     public function send(Request $request)  
     {
-        $this->validate($request, ['email' => 'required|email']);
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email'
+        ]);
+        
+        //バリデーション
+        if ($validator->fails()) {
+            return redirect()->back()->with('check','メールアドレスを入力してください。');
+        }
 
         $user = User::where('email','=',$request->email)->first();
-        
-
         if (is_null($user)) {
-            return redirect()->back()->with('message','メールアドレスが存在しません。');
+            return redirect()->back()->with('messages','メールアドレスが存在しません。');
         }
 
         $token = Str::random(32);//トークン生成
@@ -88,19 +92,26 @@ public function authenticate(LoginFormRequest $request){
         $user->created_at_token=date('Y-m-d H:i:s');//リセットトークン発行時間の更新
         $user->save(); //DBに保存
         
-
-
-           mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
-           ->send(new ContactReply($token));
+        //mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
+        mail::to($request->email)  //メールの自動送信設定 $request->email
+        ->send(new ContactReply($token));
         
             return view('login.notice'); //送信完了通知画面表示
     
     }
 
-    //メールに添付のパスワード再発行URL画面を表示
+        //メールに添付のパスワード再発行URL画面を表示
     public function posts(Request $request,$token)
     {   
        
+        $user = User::where('reset_token','=',$request->token)->first();
+       
+        // トークンが一致しない場合、エラーメッセージが出る
+        if (is_null($user)) {
+        return view('login.error');
+       }
+
+
         $createTime = User::where('reset_token',$request->token)->first();
        
         //数値型になおす
@@ -135,32 +146,27 @@ public function authenticate(LoginFormRequest $request){
        
        // トークンが一致しない場合、エラーメッセージが出る
        if (is_null($user)) {
-        return redirect()->back()->with('message','もう一度メールを再発行してください。');
+       return redirect()->back()->with('message','もう一度メールを再発行してください。');
        }
        $user->password = Hash::make($request['password']);
        $user->save();
 
             return view('login.login');
-        }
-
-
-    /**
- * ユーザーをアプリケーションからログアウトさせる
- *
- * @param  \Illuminate\Http\Request  $request
- * @return \Illuminate\Http\Response
- */
-public function logout(Request $request)
-{
-    Auth::logout();
-
-    $request->session()->invalidate();
-
-    $request->session()->regenerateToken();
-
-    return redirect()->route('login.login');
-}
     }
+
+
+        /**
+     * ユーザーをアプリケーションからログアウトさせる
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function logout()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
+}
 
 
 

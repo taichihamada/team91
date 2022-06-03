@@ -30,8 +30,4 @@ class event extends Model
         'event_category',
         'event_date',
     ];
-
-    public function entries(){
-        return $this->hasMany('App\Models\Entry');
-    }
 }

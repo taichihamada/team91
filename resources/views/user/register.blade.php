@@ -39,6 +39,9 @@
             @endif
         </form>
     </div>
+    <div class="a-user">
+    <a href="/user/list">ユーザー一覧画面へ</a>
+    </div>
 </body>
 
 </html>

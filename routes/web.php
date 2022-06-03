@@ -43,14 +43,6 @@ Route::get('/', function () {
     Route::get('/logout', [LoginController::class,'logout']);
 
 
-    // 新規ユーザー登録画面
-    Route::get('/user/register', [Usercontroller::class, 'register'])->name('register');
-
-    // 登録ボタン（このボタンでユーザー情報をデータベースに登録）
-    Route::post('/user/Register', [Usercontroller::class, 'userRegister']);
-    // 確認画面
-    Route::post('/user/show', [Usercontroller::class, 'show'])->name('show');
-
 
 Route::get('/event/update/{id}',[EventController::class,'update']);
 Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
@@ -59,6 +51,13 @@ Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
 
 Route::group(['middleware'=>['auth','can:admin-only']],function(){
 
+    // 新規ユーザー登録画面
+    Route::get('/user/register', [Usercontroller::class, 'register'])->name('register');
+
+    // 登録ボタン（このボタンでユーザー情報をデータベースに登録）
+    Route::post('/user/Register', [Usercontroller::class, 'userRegister']);
+    // 確認画面
+    Route::post('/user/show', [Usercontroller::class, 'show'])->name('show');
     // 登録されたユーザーを一覧表示
     Route::get('/user/list', [Usercontroller::class, 'userlist'])->name('userlist');
     // 誰の情報を更新するかを選択する更新ボタン

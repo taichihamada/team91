@@ -1,3 +1,58 @@
 .form{
     display:block;
 }
+
+.h6, h6{
+    display: flex;
+}
+
+body{
+    background-color: #add6f3;
+}
+
+/* ユーザー一覧画面 */
+.users-title{
+    border-bottom: solid;
+    margin-bottom: 40px;
+}
+
+.link{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+/* 検索窓付近 */
+
+.title{
+    border-bottom: solid;
+}
+.serch{
+    display: flex;
+    margin-top: 35px;
+}
+
+.serch p{
+    text-align: left;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+.serch form{
+    margin-left: auto;
+    padding-bottom: 20px;
+}
+
+/* ユーザー一覧部分 */
+.tdp{
+    margin-right: 200px;
+}
+
+td {
+    padding-top: 15px;
+}
+
+/* aタグ */
+.a-user{
+    text-align: center;
+}

@@ -26,7 +26,7 @@
     <!-- 検索エリア -->
     <div class="search-area">
         <form action="" method="get">
-            <input type="text" class="form-control" placeholder="イベント検索" name="search">
+            <input type="search" class="form-control" placeholder="イベント検索" name="search" value="">
             <button type="submit" class="btn btn-secondary">検索</button>
         </form>
     </div>
@@ -39,7 +39,8 @@
         <div class="side">
             <ul>
                 <li class="nav-item"><a href="/event/register">新規イベント登録</a></li>
-                <li class="nav-item"><a href="">ログアウト</a></li>
+                <li class="nav-item"><a href="/user/list">ユーザー一覧</a></li>
+                <li class="nav-item"><a href="/logout">ログアウト</a></li>
             </ul>
         </div>
 
@@ -61,20 +62,22 @@
                         <th>申込締切日</th>
                         <th>公開・非公開</th>
                         <th>備考欄</th>
+                        <th>参加者一覧</th>
                         <th> </th>
                     </tr>
                     @foreach($event as $value)
                         <tr>
                             <td>{{$value->event_name}}</td>
-                            <td>{{$value->event_category}}</td>
+                            <td>{{$categories[$value->event_category]}}</td>
                             <td>{{$value->overview}}</td>
                             <td>{{$value->event_date}}</td>
                             <td>{{$value->place}}</td>
                             <td>{{$value->price}}</td>
                             <td>{{$value->period_start}}</td>
                             <td>{{$value->period_end}}</td>
-                            <td>{{$value->status}}</td>
+                            <td>{{$statuses[$value->status]}}</td>
                             <td>{{$value->remarks}}</td>
+                            <td></td>
                             <td><a href="/event/update/{{$value->id}}">編集</a></td>
                         </tr>
                     @endforeach

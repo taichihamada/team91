@@ -30,11 +30,12 @@
 
 <div style="width: 400px; text-align:left; margin: 10px auto;">
     <form action="/event/eventRegister" method="post">
+    
         @csrf
         <div class="form-group">
             <p>イベント名：{{$event['event_name']}}</p>
             <input class="form-control" value="{{$event['event_name']}}" type="hidden" name="event_name">
-            <p>イベント種別：{{$event['event_category']}}</p>
+            <p>イベント種別：{{$categories[$event['event_category']]}}</p>
             <input class="form-control" value="{{$event['event_category']}}" type="hidden" name="event_category">       
             <p>イベント詳細：{{$event['overview']}}</p>
             <input class="form-control" value="{{$event['overview']}}" type="hidden" name="overview">           
@@ -49,17 +50,16 @@
             <p>申込終了日：{{$event['period_end']}}</p>
             <input class="form-control" value="{{$event['period_end']}}" type="hidden" name="period_end">
             <br>
-            <p>状態：{{$event['status']}}</p>
+            <p>状態：{{$statuses[$event['status']]}}</p>
             <input class="form-control" value="{{$event['status']}}" type="hidden" name="status">
             <br>
             <p></p>
             <p>備考欄：{{$event['remarks']}}</p>
             <input class="form-control" value="{{$event['remarks']}}" type="hidden" name="remarks">
 
-            <button type="submit" class="btn btn-secondary">登録</button>
-            <div class="form-group">
-                <a href="/event/register"><button type="button" class="btn btn-secondary">戻る</button></a>
-            </div>
+            <button type="submit" class="btn btn-secondary" name="send">登録</button>
+            <button type="submit" class="btn btn-secondary" name="return">戻る</button>
+
         </div>
     </form>
 </div>

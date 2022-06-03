@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
+
 class ContactReply extends Mailable
 {
     use Queueable, SerializesModels;
@@ -18,7 +19,7 @@ class ContactReply extends Mailable
      */
     public function __construct($token)
     {
-        $this->token=$token;
+        $this->token=$token;        
     }
 
     /**
@@ -30,6 +31,5 @@ class ContactReply extends Mailable
     {
         return $this->view('login.emailtext',['token'=>$this->token])
         ->subject('メール');
-       
     }
 }

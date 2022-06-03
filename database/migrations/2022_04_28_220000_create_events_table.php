@@ -21,8 +21,8 @@ class CreateEventsTable extends Migration
             $table->datetime('event_date')->comment('開催日時');
             $table->string('place')->comment('場所');
             $table->integer('price')->comment('参加料金');
-            $table->datetime('period_start')->comment('申込開始日');
-            $table->datetime('period_end')->comment('申込締切日');
+            $table->date('period_start')->comment('申込開始日');
+            $table->date('period_end')->comment('申込締切日');
             $table->integer('user_id')->comment('ユーザー番号');                                   
             $table->tinyInteger('status')->comment('公開・非公開');
             $table->text('remarks')->comment('備考欄');

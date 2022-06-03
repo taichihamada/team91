@@ -20,8 +20,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     </head>
-    <body>
-        <div style="width: 800px; padding: 10px; margin: 100px auto;  border: 1px solid #333333; text-align:left;">
+    <body class="notice">
+        <div  class="inner" style="width: 800px; padding: 10px; margin: 100px auto;  border: 1px solid #333333; text-align:left;">
             <h2>パスワード再発行</h2><hr><br>
                <div style="text-align:center; padding: 90px; margin-bottom: 1px">
                    <font size="4">パスワード再設定用URLをご登録のメールアドレス宛にお送りしました。<br>

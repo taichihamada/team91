@@ -12,12 +12,34 @@ class EventController extends Controller
     public function top(){
 
         $event = Event::all();
+        $categories = Event::CATEGORIES;
+        $statuses = Event::STATUS;
 
         return view('event/top')->with([
             'event' => $event,
+            'categories' => $categories,
+            'statuses' => $statuses,
         ]);
     }
 
+    // イベント検索
+    // public function top(Request $request){
+
+    //     $keyword = $request->input('keyword');
+
+    //     $query = Post::query();
+
+    //     if(!empty($keyword)){
+
+    //         $query->where('event_name', 'LIKE', "%{$keyword}%")
+    //             ->orWhere('overview','LIKE', "%{$keyword}%")
+    //             ->orWhere('place','LIKE', "%{$keyword}%");
+    //     }
+
+    //     $posts = $query->get();
+
+    //     return view('event/top',compact('posts','keyword'));
+    // }
 
     // イベント登録画面の表示
     public function register() {
@@ -50,7 +72,6 @@ class EventController extends Controller
             'period_start.date' => '申込開始日を入力してください',
             'period_end.date' => '申込締切日を入力してください',
             'remarks.required' => '備考欄を入力してください',
-
         ];
 
         $validator = Validator::make($request->all(), $rules, $message);
@@ -60,14 +81,21 @@ class EventController extends Controller
             ->withInput();
         }
         $event = $request->all();
+        $categories = Event::CATEGORIES;
+        $statuses = Event::STATUS;
         return view('event/registerConfirm',[
             'event' => $event,
+            'categories' => $categories,
+            'statuses' => $statuses,
         ]);
     }
 
 
     // イベントの登録
     public function eventRegister(Request $request) {
+        if($request->has('return')){
+            return redirect('/event/register')->withInput();
+        }
 
         $event = new Event();
         $event->event_name = $request->event_name;
@@ -93,8 +121,10 @@ class EventController extends Controller
 
         return view('event/update')->with([
             'event' => $event,
+
         ]);
     }
+
     // イベント編集確認
     public function updateConfirm(Request $request) {
 
@@ -124,4 +154,6 @@ class EventController extends Controller
 
         return redirect('event/top');
     }
+
+
 }

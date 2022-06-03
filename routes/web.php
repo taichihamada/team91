@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\Usercontroller;
 use App\Http\Controllers\LoginController;
-use Illuminate\Support\Facades\Password;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,40 +43,48 @@ Route::post('/login/update', [LoginController::class,'update']);
 //ログアウト
 Route::get('/logout', [LoginController::class,'logout']);
 
-// 新規ユーザー登録画面
-Route::get('/user/register', [Usercontroller::class, 'register']);
-// 登録ボタン（このボタンでユーザー情報をデータベースに登録）
-Route::post('/user/Register', [Usercontroller::class, 'userRegister']);
-// 確認画面
-Route::post('/user/show', [Usercontroller::class, 'show']);
-// 登録されたユーザーを一覧表示
-Route::get('/user/list', [Usercontroller::class, 'userlist']);
-// 誰の情報を更新するかを選択する更新ボタン
-Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('user_edit');
-// 更新画面からの更新ボタン
-Route::post('/user/edit', [Usercontroller::class, 'useredit']);
-// 検索ボタン
-Route::get('/user/serch', [Usercontroller::class, 'serch']);
-Route::get('/event/top',[EventController::class,'top']);
-// ユーザー削除・確認画面
-Route::get('/user/delete', [Usercontroller::class, 'deleteconfirm']);
-// ユーザー削除機能
-Route::post('/user/delete/all', [Usercontroller::class, 'userdelete']);
 
-Route::get('/event/register',[EventController::class,'register'])->name('register');
-Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
+Route::group(['middleware'=>['auth','can:admin-only']],function(){
 
-Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
+    // 新規ユーザー登録画面
+    Route::get('/user/register', [Usercontroller::class, 'register']);
+    // 登録ボタン（このボタンでユーザー情報をデータベースに登録）
+    Route::post('/user/Register', [Usercontroller::class, 'userRegister']);
+    // 確認画面
+    Route::post('/user/show', [Usercontroller::class, 'show']);
+    // 登録されたユーザーを一覧表示
+    Route::get('/user/list', [Usercontroller::class, 'userlist']);
+    // 誰の情報を更新するかを選択する更新ボタン
+    Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('user_edit');
+    // 更新画面からの更新ボタン
+    Route::post('/user/edit', [Usercontroller::class, 'useredit']);
+    // 検索ボタン
+    Route::get('/user/serch', [Usercontroller::class, 'serch']);
+    Route::get('/event/top',[EventController::class,'top']);
+    // ユーザー削除・確認画面
+    Route::get('/user/delete', [Usercontroller::class, 'deleteconfirm']);
+    // ユーザー削除機能
+    Route::post('/user/delete/all', [Usercontroller::class, 'userdelete']);
 
-Route::get('/event/update/{id}',[EventController::class,'update']);
-Route::post('/event/updateConfirm',[EventController::class,'updateconfirm']);
 
-Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 
-Route::get('/event/entrylist',[EventController::class,'entrylist']);
+    Route::get('/event/register',[EventController::class,'register'])->name('register');
+    Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
 
-Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index']);
-Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
-Route::post('/entry/confirm', [App\Http\Controllers\EntryController::class, 'confirm']);
-Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
+    Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
 
+    Route::get('/event/update/{id}',[EventController::class,'update']);
+    Route::post('/event/updateConfirm',[EventController::class,'updateconfirm']);
+
+    Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
+
+    Route::get('/event/entrylist',[EventController::class,'entrylist']);
+});
+
+Route::group(['middleware'=>['auth','can:user-higher']],function(){
+
+    Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index'])->name('entry');
+    Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);
+    Route::get('/entry/confirm/{id}', [App\Http\Controllers\EntryController::class, 'confirm']);
+    Route::post('/entry/complete', [App\Http\Controllers\EntryController::class, 'complete']);
+});

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Entry;
 use Validator;
 
 class EventController extends Controller
@@ -23,23 +24,26 @@ class EventController extends Controller
     }
 
     // イベント検索
-    // public function top(Request $request){
+    public function serch(Request $request){
 
-    //     $keyword = $request->input('keyword');
+        $keyword = $request->input('keyword');
 
-    //     $query = Post::query();
+        $query = Event::query();
 
-    //     if(!empty($keyword)){
+        if(!empty($keyword)){
 
-    //         $query->where('event_name', 'LIKE', "%{$keyword}%")
-    //             ->orWhere('overview','LIKE', "%{$keyword}%")
-    //             ->orWhere('place','LIKE', "%{$keyword}%");
-    //     }
+            $query->where('event_name', 'LIKE', "%{$keyword}%")
+                ->orWhere('overview','LIKE', "%{$keyword}%")
+                ->orWhere('place','LIKE', "%{$keyword}%");
+        }
 
-    //     $posts = $query->get();
+        $event = $query->get();
+        $categories = Event::CATEGORIES;
+        $statuses = Event::STATUS;
 
-    //     return view('event/top',compact('posts','keyword'));
-    // }
+        return view('event/top',compact('event','keyword','categories','statuses'));
+    }
+
 
     // イベント登録画面の表示
     public function register() {
@@ -48,8 +52,9 @@ class EventController extends Controller
     }
 
 
-    // バリデーションによるチェック
+    // 新規イベント登録・バリデーションによるチェック後に確認画面に遷移
     public function registerConfirm(Request $request){
+
         $rules = [
             'event_name' => 'required',
             'event_category' => 'integer',
@@ -125,8 +130,53 @@ class EventController extends Controller
         ]);
     }
 
-    // イベント編集確認
+    // イベント編集・バリデーションチェック後確認画面に遷移
     public function updateConfirm(Request $request) {
+
+        $rules = [
+            'event_name' => 'required',
+            'event_category' => 'integer',
+            'overview' => 'required',
+            'event_date' => 'date',
+            'place' => 'required',
+            'price' => 'integer',
+            'period_start' => 'date',
+            'period_end' => 'date',
+            'remarks' => 'required',
+        ];
+        
+        $message = [
+            'event_name.required' => 'イベント名を入力してください',
+            'event_category.integer' => '項目の中から選択してください',
+            'overview.required' => 'イベントの詳細を入力してください',
+            'event_date.date' => '日時を入力してください',
+            'place.required' => '場所を入力してください',
+            'price.integer' => '金額を入力してください',
+            'period_start.date' => '申込開始日を入力してください',
+            'period_end.date' => '申込締切日を入力してください',
+            'remarks.required' => '備考欄を入力してください',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+        if($validator->fails()){
+            return redirect('/event/update/'.$request->id)
+            ->withErrors($validator)
+            ->withInput();
+        }
+        $event = $request->all();
+        $categories = Event::CATEGORIES;
+        $statuses = Event::STATUS;
+        return view('event/updateConfirm',[
+            'event' => $event,
+            'categories' => $categories,
+            'statuses' => $statuses,
+        ]);
+    }
+
+    public function updateRegister(Request $request) {
+        if($request->has('return')){
+            return redirect('/event/update/'.$request->id)->withInput();
+        }
 
         $event = Event::where('id','=', $request->id)->first();
         $event->event_name = $request->event_name;
@@ -142,9 +192,7 @@ class EventController extends Controller
         $event->remarks = $request->remarks;
         $event->save();
 
-        return view('event/updateConfirm')->with([
-            'event' => $event,
-        ]);
+        return redirect('event/top');
     }
 
     public function eventDelete(Request $request) {
@@ -153,6 +201,17 @@ class EventController extends Controller
         $event ->delete();
 
         return redirect('event/top');
+    }
+
+    public function entrylist(Request $request){
+
+        $entry = Entry::where('id','=', $request->id)->get();
+
+        return view('event.entrylist')->with([
+            'entry' => $entry,
+            
+
+        ]);
     }
 
 

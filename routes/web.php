@@ -56,8 +56,8 @@ Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('edit');
 Route::post('/user/edit', [Usercontroller::class, 'useredit'])->name('useredit');
 // 検索ボタン
 Route::get('/user/serch', [Usercontroller::class, 'serch'])->name('serch');
-Route::get('/event/top',[EventController::class,'top'])->name('top');
 
+Route::get('/event/top',[EventController::class,'top'])->name('top');
 
 Route::get('/event/register',[EventController::class,'register'])->name('register');
 Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
@@ -67,9 +67,13 @@ Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
 Route::get('/event/update/{id}',[EventController::class,'update']);
 Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
 
+Route::post('/event/updateRegister',[EventController::class,'updateRegister']);
+
 Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 
-Route::get('/event/entrylist',[EventController::class,'entrylist']);
+Route::get('/event/entrylist/{id}',[EventController::class,'entrylist']);
+
+Route::get('/event/serch', [EventController::class, 'serch'])->name('serch');
 
 Route::get('/entry', [App\Http\Controllers\EntryController::class, 'index']);
 Route::get('/entry/summry/{id}', [App\Http\Controllers\EntryController::class, 'summry']);

@@ -23,57 +23,29 @@
 </head>
 
 <body>
-    <!-- 検索エリア -->
-    <div class="search-area">
-        <form action="/event/serch" method="get">
-            <input type="search" class="form-control" placeholder="イベント検索" name="keyword" value="">
-            <button type="submit" class="btn btn-secondary">検索</button>
-        </form>
-    </div>
-
-    <!-- 仕切りエリア -->
-    <div class="ditch"></div>
-
     <!-- イベント一覧エリア -->
     <div class = "container">
         <div class="side">
             <ul>
                 <li class="nav-item"><a href="/event/register">新規イベント登録</a></li>
                 <li class="nav-item"><a href="/user/list">ユーザー一覧</a></li>
-                <li class="nav-item"><a href="/entry">エントリー一覧</a></li>
                 <li class="nav-item"><a href="/logout">ログアウト</a></li>
             </ul>
         </div>
 
         <div class="main">
             <div style="text-align:center;">
-                <h4>イベント一覧</h4>
+                <h4>エントリー一覧</h4>
             </div>
 
-            <div class="registerList">
+            <div class="entryList">
                 <table class="table" border="3">
                     <tr>
-                        <th>イベント番号</th>
-                        <th>イベント名</th>
-                        <th>イベント種別</th>
-                        <th>開催日時</th>
-                        <th>申込開始日</th>
-                        <th>申込締切日</th>
-                        <th>公開・非公開</th>
-                        <th>参加者一覧</th>
-                        <th></th>
+                        <th>イベントエントリー</th>
                     </tr>
-                    @foreach($event as $value)
+                    @foreach($entry as $value)
                         <tr>
                             <td>{{$value->id}}</td>
-                            <td>{{$value->event_name}}</td>
-                            <td>{{$categories[$value->event_category]}}</td>
-                            <td>{{$value->event_date}}</td>
-                            <td>{{$value->period_start}}</td>
-                            <td>{{$value->period_end}}</td>
-                            <td>{{$statuses[$value->status]}}</td>
-                            <td><a href="/event/entrylist/{{$value->id}}">申込一覧</a></td>
-                            <td><a href="/event/update/{{$value->id}}">内容確認・編集</a></td>
                         </tr>
                     @endforeach
                 </table>

@@ -22,4 +22,16 @@ class event extends Model
         1 => "非公開",
         2 => "公開",
     ];
+
+
+
+    protected $fillable = [
+        'event_name',
+        'event_category',
+        'event_date',
+    ];
+
+    public function entries(){
+        return $this->hasMany('App\Models\Entry');
+    }
 }

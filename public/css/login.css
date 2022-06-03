@@ -1,0 +1,35 @@
+.login {
+    min-height: 100vh;
+    /* height: 250px; */
+    background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+    color: #fff;
+}
+
+.index {
+    background: radial-gradient(#CCFFFF, #66CCFF) fixed;
+
+}
+
+.inner {
+    background-color: whitesmoke;
+}
+
+.heading{
+    color: #fff8dc;
+}
+
+.notice{
+    background: radial-gradient(#FFCCFF, #FF82B2) fixed;
+}
+
+.password{
+    background: radial-gradient(#CCFFFF, #66CCFF) fixed;
+}
+
+span{
+    background:linear-gradient(transparent 60%, #6cf 60%);
+}
+
+.error{
+    background-color:#BBFFFF;
+}

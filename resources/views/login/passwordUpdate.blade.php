@@ -10,9 +10,6 @@
 
         <title>パスワード再発行</title>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -41,7 +38,11 @@
                 <div class="mb-3 row">
                         <label for="exampleFormControlInput1" class="col-sm-2 col-form-label">新しい<br>パスワード</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="exampleFormControlInput1" value="{{ old('newpassword') }}" name="password"><br>
+                        <input type="password" class="form-control" id="password" value="{{ old('newpassword') }}" name="password">
+                            <div style=text-align:left;>
+                                <input type="checkbox" id="password-check">
+                                <font size="1">パスワードを表示する</font>
+                            </div>
                     </div>
                 </div>
                         <div class="mb-3 row">    
@@ -63,6 +64,7 @@
                 </div>  
             </form>
         </div>
+        <script src="{{ asset('js/login.js') }}" defer></script>
     </body>
 </html>
 

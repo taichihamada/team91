@@ -10,8 +10,6 @@
 
         <title>login</title>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/login.js') }}" defer></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -43,8 +41,11 @@
                     <input class="form-control form-control-lg" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="パスワード"  value="{{ old('password') }}"><br>
+                    <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="パスワード" value="{{ old('password') }}">
+                    <div style=text-align:left;>
                     <input type="checkbox" id="password-check">
+                    パスワードを表示する
+                    </div>
 
                 </div>
 
@@ -59,5 +60,6 @@
                 </div>
         </form>
     </div>
+    <script src="{{ asset('js/login.js') }}" ></script>
     </body>
 </html>

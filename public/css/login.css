@@ -6,7 +6,7 @@
 }
 
 .index {
-    background-color: #afeeee;
+    background: radial-gradient(#CCFFFF, #66CCFF) fixed;
 
 }
 
@@ -19,11 +19,11 @@
 }
 
 .notice{
-    background-color:#FFCCFF;
+    background: radial-gradient(#FFCCFF, #FF82B2) fixed;
 }
 
 .password{
-    background-color:#d3d3d3;
+    background: radial-gradient(#CCFFFF, #66CCFF) fixed;
 }
 
 span{

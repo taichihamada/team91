@@ -81,8 +81,9 @@
               <th>id</th>
               <th>タイトル</th>
               <th>カテゴリー</th>
-              <th>開催日</th>
+              <th>開催日時</th>
               <th>申込期間</th>
+              <th>申込状況</th>
               </tr>
               @foreach($events as $event)
               <tr>
@@ -91,6 +92,7 @@
                   <td>{{$event->event_category}}</td>
                   <td>{{$event->event_date}}</td>
                   <td>{{$event->period_start}}～{{$event->period_start}}</td>
+                  <td><font color="red">申込済</fotn></td>
               </tr>
               @endforeach
             </table>

@@ -12,6 +12,7 @@
 
 </head>
 <body>
+
   <h1>イベント申込確認フォーム</h1>
 
   <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/624bd4fb51d7e5589581b6c2_94.png" width="150px" height="150px" alt="画像">
@@ -19,48 +20,17 @@
   <h2>申込内容</h2>
 
   <!-- イベント詳細 -->
-  <!-- <div class="item">
-    <p>{{$event->event_name}}</p>
-    <p>{{$event->event_category}}</p>
-    <p>{{$event->overview}}</p>
-    <p>{{$event->event_date}}</p>
-    <p>{{$event->place}}</p>
-    <p>{{$event->price}}</p>
-    <p>{{$event->period_start}}</p>
-    <p>{{$event->period_end}}</p>
-    <p>{{$event->user_id}}</p>
-    <p>{{$event->remarks}}</p>
-  </div> -->
-
-  <table class="table">
-              <tr>
-                <th>id</th>
-                <th>タイトル</th>
-                <th>カテゴリー</th>
-                <th>詳細</th>
-                <th>開催日時</th>
-                <th>開催場所</th>
-                <th>参加料金</th>
-                <th>申込開始日</th>
-                <th>申込締切日</th>
-                <th>ユーザー番号</th>
-                <th>公開・非公開</th>
-                <th>備考</th>
-              </tr>
-              <tr>
-                <td>{{$event->id}}</td>
-                <td>{{$event->event_name}}</td>
-                <td>{{$event->event_category}}</td>
-                <td>{{$event->overview}}</td>
-                <td>{{$event->event_date}}</td>
-                <td>{{$event->place}}</td>
-                <td>{{$event->price}}</td>
-                <td>{{$event->period_start}}</td>
-                <td>{{$event->period_end}}</td>
-                <td>{{$event->user_id}}</td>
-                <td>{{$event->remarks}}</td>
-              </tr>
-            </table>
+  <div class="item">
+      <p>タイトル：{{$event->event_name}}</p>
+      <p>カテゴリー：{{$event->event_category}}</p>
+      <p>イベント詳細：{{$event->overview}}</p>
+      <p>開催日時：{{$event->event_date}}</p>
+      <p>場所：{{$event->place}}</p>
+      <p>参加料金：{{$event->price}}</p>
+      <p>申込開始日：{{$event->period_start}}</p>
+      <p>申込締切日：{{$event->period_end}}</p>
+      <p>備考：{{$event->remarks}}</p>
+    </div>
 
   <!-- 申込ボタン -->
   <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">

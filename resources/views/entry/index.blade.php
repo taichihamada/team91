@@ -20,7 +20,7 @@
           <div class="main-header">
           <div class="button01">
           <!-- ログアウトボタン -->
-          <a href="{{ url('/logout') }}" class="btn">ログアウト</a>
+          <a href="/logout" class="btn">ログアウト</a>
           </div>
           <!-- ユーザー一覧へボタン(植田さんのユーザー一覧画面へ遷移) -->
           <a href="{{ url('/user/list') }}" class="btn">ユーザー一覧へ</a>
@@ -81,8 +81,9 @@
               <th>id</th>
               <th>タイトル</th>
               <th>カテゴリー</th>
-              <th>開催日</th>
+              <th>開催日時</th>
               <th>申込期間</th>
+              <th>申込状況</th>
               </tr>
               @foreach($events as $event)
               <tr>
@@ -91,6 +92,7 @@
                   <td>{{$event->event_category}}</td>
                   <td>{{$event->event_date}}</td>
                   <td>{{$event->period_start}}～{{$event->period_start}}</td>
+                  <td><font color="red">申込済</fotn></td>
               </tr>
               @endforeach
             </table>

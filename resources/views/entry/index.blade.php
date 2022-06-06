@@ -46,9 +46,9 @@
           <div class="home">
             <form method="get" action="{{route('entry')}}">
             <select class="form-select" name="event_category_id">
-              <option value="">カテゴリーを選んでください
+            <option value="">カテゴリーを選んでください
               @foreach($all_events as $event)
-                    <option value={{$event->event_category}}>{{$event->id}}
+                <option value={{$event->event_category}}>{{$event->id}}
               @endforeach
             </select>
             <div class="search1">
@@ -61,7 +61,7 @@
           </div>
         
           <!-- ホーム画面 イベント一覧 -->
-          <div class="home">
+          <div class="home"> 
           <h2>イベント一覧</h2>
 
           <!-- ホーム画面 イベント一覧 アイコン -->
@@ -78,23 +78,27 @@
           <!-- ホーム画面 イベント一覧 表 -->
             <table class="table">
               <tr>
-              <th>id</th>
-              <th>タイトル</th>
-              <th>カテゴリー</th>
-              <th>開催日時</th>
-              <th>申込期間</th>
-              <th>申込状況</th>
+                <th>id</th>
+                <th>タイトル</th>
+                <th>カテゴリー</th>
+                <th>開催日時</th>
+                <th>申込期間</th>
+                <th>申込状況</th>
               </tr>
               @foreach($events as $event)
               <tr>
-                  <td>{{$event->id}}</td>
-                  <td><a href="/entry/summry/{{$event->id}}">{{$event->event_name}}</a></td>
-                  <td>{{$event->event_category}}</td>
-                  <td>{{$event->event_date}}</td>
-                  <td>{{$event->period_start}}～{{$event->period_start}}</td>
-                  <td><font color="red">申込済</fotn></td>
+                <td>{{$event->id}}</td>
+                <td><a href="/entry/summry/{{$event->id}}">{{$event->event_name}}</a></td>
+                <td>{{$event->event_category}}</td>
+                <td>{{$event->event_date}}</td>
+                <td>{{$event->period_start}}～{{$event->period_start}}</td>
+                @if (isset($event->entry->created_at))
+                  <td><font color="red">申込済</font></td>
+                @else
+                  <td></td>
+                @endif 
               </tr>
-              @endforeach
+                @endforeach
             </table>
         </div>
       </div>

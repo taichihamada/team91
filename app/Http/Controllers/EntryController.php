@@ -28,7 +28,10 @@ class EntryController extends Controller
         } else {
             $events = Event::where('event_category', $event_category_id)->orderBy('created_at', 'desc')->get();
         }
-        $all_events = Event::orderBy('created_at', 'desc')->get();
+        // $all_events = Event::orderBy('created_at', 'desc')->get();
+        //リレーション
+        $all_events = Event::orderBy('created_at', 'desc')->with('entry')->get();
+        // dd($all_events);
         return view('entry.index', [
             'events' => $events,
             'all_events' => $all_events,

@@ -52,17 +52,19 @@
 
             <div class="registerList">
                 <table class="table" border="3">
-                    <tr>
-                        <th>イベント番号</th>
-                        <th>イベント名</th>
-                        <th>イベント種別</th>
-                        <th>開催日時</th>
-                        <th>申込開始日</th>
-                        <th>申込締切日</th>
-                        <th>公開・非公開</th>
-                        <th>参加者一覧</th>
-                        <th></th>
-                    </tr>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">イベント番号</th>
+                            <th scope="col">イベント名</th>
+                            <th scope="col">イベント種別</th>
+                            <th scope="col">開催日時</th>
+                            <th scope="col">申込開始日</th>
+                            <th scope="col">申込締切日</th>
+                            <th scope="col">公開・非公開</th>
+                            <th scope="col">参加者一覧</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     @foreach($event as $value)
                         <tr>
                             <td>{{$value->id}}</td>
@@ -73,7 +75,7 @@
                             <td>{{$value->period_end}}</td>
                             <td>{{$statuses[$value->status]}}</td>
                             <td><a href="/event/entrylist/{{$value->id}}">申込一覧</a></td>
-                            <td><a href="/event/update/{{$value->id}}">内容確認・編集</a></td>
+                            <td><a href="/event/update/{{$value->id}}">内容確認<br>・編集</a></td>
                         </tr>
                     @endforeach
                 </table>

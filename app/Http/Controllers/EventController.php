@@ -34,8 +34,7 @@ class EventController extends Controller
         if(!empty($keyword)){
 
             $query->where('event_name', 'LIKE', "%{$keyword}%")
-                ->orWhere('overview','LIKE', "%{$keyword}%")
-                ->orWhere('place','LIKE', "%{$keyword}%");
+                ->orWhere('event_date','LIKE', "%{$keyword}%");
         }
 
         $event = $query->get();
@@ -173,7 +172,7 @@ class EventController extends Controller
             'statuses' => $statuses,
         ]);
     }
-
+    // イベント編集確認画面後、登録
     public function updateRegister(Request $request) {
         if($request->has('return')){
             return redirect('/event/update/'.$request->id)->withInput();
@@ -188,7 +187,7 @@ class EventController extends Controller
         $event->price = $request->price;
         $event->period_start = $request->period_start;
         $event->period_end = $request->period_end;
-        //TODO: $event->user_id = $request->user_id;
+        $event->user_id = Auth::id();
         $event->status = $request->status;
         $event->remarks = $request->remarks;
         $event->save();
@@ -196,6 +195,7 @@ class EventController extends Controller
         return redirect('event/top');
     }
 
+    // イベントの削除
     public function eventDelete(Request $request) {
 
         $event = Event::where('id','=', $request->id)->first();
@@ -203,7 +203,7 @@ class EventController extends Controller
 
         return redirect('event/top');
     }
-
+    // イベントへの申込者リスト表示
     public function entrylist(Request $request){
 
         $event = Event::where('id','=', $request->id)->first();

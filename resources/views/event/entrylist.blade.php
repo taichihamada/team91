@@ -35,7 +35,7 @@
 
         <div class="main">
             <div style="text-align:center;">
-                <h4>{{$event->id}}{{$event->event_name}}エントリー一覧</h4>
+                <h4>{{$event->event_name}}エントリー一覧</h4>
             </div>
 
             <div class="entryList">

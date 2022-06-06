@@ -44,9 +44,6 @@ Route::get('/', function () {
 
 
 
-
-
-
 Route::group(['middleware'=>['auth','can:admin-only']],function(){
 
     // 新規ユーザー登録画面
@@ -64,8 +61,9 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
     Route::post('/user/edit', [Usercontroller::class, 'useredit'])->name('useredit');
     // 検索ボタン
     Route::get('/user/serch', [Usercontroller::class, 'serch'])->name('serch');
-    Route::get('/event/top',[EventController::class,'top'])->name('top');
 
+    Route::get('/event/top',[EventController::class,'top'])->name('top');
+    Route::get('/event/serch', [EventController::class, 'serch'])->name('serch');
 
     Route::get('/event/register',[EventController::class,'register'])->name('register');
     Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);

@@ -72,6 +72,7 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
 
     Route::get('/event/update/{id}',[EventController::class,'update']);
     Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
+    Route::post('/event/updateRegister',[EventController::class,'updateRegister']);
 
     Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 

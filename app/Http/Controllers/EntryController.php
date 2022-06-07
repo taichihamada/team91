@@ -38,14 +38,17 @@ class EntryController extends Controller
     // イベント詳細画面
     public function summry(Request $request)
     {
-        $event = event::find($request->id);
-        return view('entry.summry', ['event' => $event]);
+        $user = Auth::user();
+        $entry = Entry::where('user_id',$user->id)->where('event_id',$request->id)->get();
+        // dd(count($entry));
+        $event = Event::find($request->id);
+        return view('entry.summry', ['event'=>$event,'entry'=>$entry]);
     }
 
     // イベント申込確認画面
     public function confirm(Request $request,$id)
     {  
-        $event = event::find($id);
+        $event = Event::find($id);
         // dd($event);
         return view('entry.confirm', ['event' => $event]);
     }
@@ -53,14 +56,13 @@ class EntryController extends Controller
     // イベント申込完了画面
     public function complete(Request $request)
     {
-
       Entry::create(
           [
               'user_id'=>Auth::id(),
               'event_id'=>$request->event_id,
           ]
       );
-        // ログインしているユーザーのIDを取得して、ユーザーIDでusersテーブルから取得する
+        // ログインしているユーザーのIDを取得して、ユーザーIDでusersテーブルから取得する(ユーザー情報取得)
         $user = Auth::user();
         // ログイン機能ができたら消す
         // $user = User::find(1);

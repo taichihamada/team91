@@ -10,25 +10,37 @@
     <title>イベント詳細</title>
 </head>
 <body>
+
     <h1>イベント詳細</h1>
+
+    <!-- ユーザーが既に申込を完了しているまたは開催日を過ぎている場合 -->
+    @if(count($entry) > 0)
+    <h2><font color="red">申込は終了しました</font></h2>
+    @endif
+
     <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/610e354b42d21a7b18a9270a_41.png" width="150px" height="150px" alt="画像">
+
+    <!-- イベント詳細 -->
     <div class="item">
-      <p>{{$event->event_name}}</p>
-      <p>{{$event->event_category}}</p>
-      <p>{{$event->overview}}</p>
-      <p>{{$event->event_date}}</p>
-      <p>{{$event->place}}</p>
-      <p>{{$event->price}}</p>
-      <p>{{$event->period_start}}</p>
-      <p>{{$event->period_end}}</p>
-      <p>{{$event->user_id}}</p>
-      <p>{{$event->remarks}}</p>
+      <p>タイトル：{{$event->event_name}}</p>
+      <p>カテゴリー：{{$event->event_category}}</p>
+      <p>イベント詳細：{{$event->overview}}</p>
+      <p>開催日時：{{$event->event_date}}</p>
+      <p>場所：{{$event->place}}</p>
+      <p>参加料金：{{$event->price}}</p>
+      <p>申込開始日：{{$event->period_start}}</p>
+      <p>申込締切日：{{$event->period_end}}</p>
+      <p>備考：{{$event->remarks}}</p>
     </div>
 
-  <!-- イベント申込ボタン -->
+  <!-- イベント申込ボタン(1回でも申込したイベントの場合、日付を超えたイベント場合は申込確認ボタンが表示されない様にする) -->
+  @if(1 > count($entry))
+  @if($event->event_date > now())
   <a href="{{url('entry/confirm/'.$event->id)}}" class="btn">イベント申込確認へ</a>
+  @endif
+  @endif
 
-  <!-- 戻るボタン -->
+  <!-- ホームへ戻るボタン -->
   <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
 </body>
 </html>

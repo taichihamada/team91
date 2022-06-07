@@ -21,7 +21,8 @@
         <p>他画面へのリンク</p>
         <a href="/user/register">ユーザー新規登録</a>
         <a href="/event/register">イベント登録</a>
-        <a href="/entry">イベント一覧</a>
+        <a href="/event/top">イベント一覧</a>
+        <a href="/entry">エントリー画面</a>
         <a href="/user/list">ユーザー一覧画面</a>
         <a href="/logout">ログアウト</a>
         </div>

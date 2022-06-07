@@ -67,6 +67,8 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
     Route::post('/user/delete/all', [Usercontroller::class, 'userdelete']);
 
 
+    Route::get('/event/top',[EventController::class,'top'])->name('top');
+    Route::get('/event/serch', [EventController::class, 'serch'])->name('serch');
 
     Route::get('/event/register',[EventController::class,'register'])->name('register');
     Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
@@ -75,6 +77,7 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
 
     Route::get('/event/update/{id}',[EventController::class,'update']);
     Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
+    Route::post('/event/updateRegister',[EventController::class,'updateRegister']);
 
     Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
 

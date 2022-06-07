@@ -1,3 +1,7 @@
+body{
+    width: 100%;
+}
+
 .container{
     display: flex;
 }
@@ -5,8 +9,8 @@
     height: 25px;
 }
 
-.main{
-    width: 100%;
+.container .main{
+    width: calc(100%-90px);
 }
 
 .error{
@@ -21,18 +25,23 @@
 
 .container .side ul{
     list-style: none;
-    padding-left: 0;
+    padding-left: 0px;
 }
 
-.registerList{
+.registerList.table{
     width: 100%;
+    table-layout: fixed;
 }
 
 .search-area{
     width: 50%;
-    margin-left: 420px;
+    margin: 10px 400px 10px 400px;
     text-align: center;
     padding-top: 10px;
 }
 
+.side ul{
+    list-style: none;
+    padding-left: 0px;
+}
 

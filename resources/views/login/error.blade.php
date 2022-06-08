@@ -11,14 +11,16 @@
         <title>パスワード再発行</title>
 
         <!-- Scripts -->
-        <script src="{{ asset('js/login.js') }}" defer></script>
+        <!-- <script src="{{ asset('js/login.js') }}" defer></script> -->
+        <script src="/js/login.js"></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+        <!-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> -->
+        <link href="/css/login.css" rel="stylesheet">
     </head>
     <body class="error">
         <div class="inner" style="width: 800px; padding: 10px; margin: 100px auto;  border: 1px solid #333333; text-align:center;">

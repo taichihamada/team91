@@ -19,7 +19,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <!-- Styles -->
-        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+        <!-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> -->
+        <link rel="stylesheet" href="/css/login.css">
     </head>
     <body class="login">
     <div style="width: 500px; text-align:center; margin: 100px auto;">
@@ -60,6 +61,6 @@
                 </div>
         </form>
     </div>
-    <script src="{{ asset('js/login.js') }}" ></script>
+    <script src="/js/login.js" ></script>
     </body>
 </html>

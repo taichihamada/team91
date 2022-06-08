@@ -89,7 +89,7 @@
               <tr>
                 <td>{{$event->id}}</td>
                 <td><a href="/entry/summry/{{$event->id}}">{{$event->event_name}}</a></td>
-                <td>{{$event->event_category}}</td>
+                <td>{{$categories[$event->event_category]}}</td>
                 <td>{{$event->event_date}}</td>
                 <td>{{$event->period_start}}～{{$event->period_start}}</td>
                 @if (isset($event->entry->created_at))

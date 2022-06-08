@@ -32,9 +32,11 @@ class EntryController extends Controller
         //リレーション
         $all_events = Event::orderBy('created_at', 'desc')->with('entry')->get();
         // dd($all_events);
+        $categories = Event::CATEGORIES;
         return view('entry.index', [
             'events' => $events,
             'all_events' => $all_events,
+            'categories' => $categories
         ]);
     }
 
@@ -45,7 +47,8 @@ class EntryController extends Controller
         $entry = Entry::where('user_id',$user->id)->where('event_id',$request->id)->get();
         // dd(count($entry));
         $event = Event::find($request->id);
-        return view('entry.summry', ['event'=>$event,'entry'=>$entry]);
+        $categories = Event::CATEGORIES;
+        return view('entry.summry', ['event'=>$event,'entry'=>$entry,'categories' => $categories]);
     }
 
     // イベント申込確認画面
@@ -53,7 +56,8 @@ class EntryController extends Controller
     {  
         $event = Event::find($id);
         // dd($event);
-        return view('entry.confirm', ['event' => $event]);
+        $categories = Event::CATEGORIES;
+        return view('entry.confirm', ['event' => $event,'categories' => $categories]);
     }
 
     // イベント申込完了画面

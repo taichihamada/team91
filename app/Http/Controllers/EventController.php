@@ -53,7 +53,7 @@ class EventController extends Controller
 
 
     // 新規イベント登録・バリデーションによるチェック後に確認画面に遷移
-    public function registerConfirm(Request $request){
+    public function registerconfirm(Request $request){
 
         $rules = [
             'event_name' => 'required',
@@ -88,7 +88,7 @@ class EventController extends Controller
         $event = $request->all();
         $categories = Event::CATEGORIES;
         $statuses = Event::STATUS;
-        return view('event/registerConfirm',[
+        return view('event/registerconfirm',[
             'event' => $event,
             'categories' => $categories,
             'statuses' => $statuses,
@@ -97,7 +97,7 @@ class EventController extends Controller
 
 
     // イベントの登録
-    public function eventRegister(Request $request) {
+    public function eventregister(Request $request) {
         if($request->has('return')){
             return redirect('/event/register')->withInput();
         }
@@ -131,7 +131,7 @@ class EventController extends Controller
     }
 
     // イベント編集・バリデーションチェック後確認画面に遷移
-    public function updateConfirm(Request $request) {
+    public function updateconfirm(Request $request) {
 
         $rules = [
             'event_name' => 'required',
@@ -166,14 +166,14 @@ class EventController extends Controller
         $event = $request->all();
         $categories = Event::CATEGORIES;
         $statuses = Event::STATUS;
-        return view('event/updateConfirm',[
+        return view('event/updateconfirm',[
             'event' => $event,
             'categories' => $categories,
             'statuses' => $statuses,
         ]);
     }
     // イベント編集確認画面後、登録
-    public function updateRegister(Request $request) {
+    public function updateregister(Request $request) {
         if($request->has('return')){
             return redirect('/event/update/'.$request->id)->withInput();
         }
@@ -196,7 +196,7 @@ class EventController extends Controller
     }
 
     // イベントの削除
-    public function eventDelete(Request $request) {
+    public function eventdelete(Request $request) {
 
         $event = Event::where('id','=', $request->id)->first();
         $event ->delete();

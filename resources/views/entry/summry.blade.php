@@ -23,16 +23,17 @@
     <!-- イベント詳細 -->
     <div class="item">
       <p>タイトル：{{$event->event_name}}</p>
-      <p>カテゴリー：{{$event->event_category}}</p>
+      <p>カテゴリー：{{$categories[$event->event_category]}}</p>
       <p>イベント詳細：{{$event->overview}}</p>
       <p>開催日時：{{$event->event_date}}</p>
       <p>場所：{{$event->place}}</p>
-      <p>参加料金：{{$event->price}}</p>
+      <p>参加料金：{{$event->price}}円</p>
       <p>申込開始日：{{$event->period_start}}</p>
       <p>申込締切日：{{$event->period_end}}</p>
       <p>備考：{{$event->remarks}}</p>
     </div>
 
+  <!-- イベント申込ボタン(1回でも申込したイベントの場合、日付を超えたイベント場合は申込確認ボタンが表示されない様にする) -->
   <!-- イベント申込ボタン(1回でも申込したイベントの場合、日付を超えたイベント場合は申込確認ボタンが表示されない様にする) -->
   @if(1 > count($entry))
   @if($event->event_date > now())

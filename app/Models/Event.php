@@ -30,4 +30,10 @@ class event extends Model
         'event_category',
         'event_date',
     ];
+
+    //リレーション
+    public function entry()
+    {
+        return $this->hasOne(Entry::class);
+    }
 }

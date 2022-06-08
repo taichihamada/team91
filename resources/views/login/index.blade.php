@@ -10,9 +10,6 @@
 
         <title>再発行</title>
 
-        <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
-
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -21,7 +18,8 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <!-- Styles -->
-        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+        <!-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> -->
+        <link href="/css/login.css" rel="stylesheet">
     </head>
     <body class="index">
         <div class="inner" style="width: 800px; padding: 80px; margin: 100px auto;  border: 1px solid #333333; text-align:center;">

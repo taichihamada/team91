@@ -18,7 +18,8 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
-        <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+        <!-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> -->
+        <link href="/css/login.css" rel="stylesheet">
     </head>
     <body class="notice">
         <div  class="inner" style="width: 800px; padding: 10px; margin: 100px auto;  border: 1px solid #333333; text-align:left;">

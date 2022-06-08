@@ -92,8 +92,8 @@ class LoginController extends Controller
         $user->created_at_token=date('Y-m-d H:i:s');//リセットトークン発行時間の更新
         $user->save(); //DBに保存
         
-        mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
-        //mail::to($request->email)  //メールの自動送信設定 $request->email
+        //mail::to('miyakoa09@gmail.com')  //メールの自動送信設定 $request->email
+        mail::to($request->email)  //メールの自動送信設定 $request->email
         ->send(new ContactReply($token));
         
             return view('login.notice'); //送信完了通知画面表示

@@ -29,7 +29,7 @@
 </div>
 
 <div style="width: 400px; text-align:left; margin: 10px auto;">
-    <form action="/event/eventRegister" method="post">
+    <form action="/event/eventregister" method="post">
     
         @csrf
         <div class="form-group">

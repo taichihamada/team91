@@ -29,7 +29,7 @@
 </div>
 
 <div style="width: 400px; text-align:left; margin: 10px auto;">
-    <form action="/event/updateRegister" method="post">
+    <form action="/event/updateregister" method="post">
         @csrf
         <div class="form-group">
             <p>イベント名：{{$event['event_name']}}</p>

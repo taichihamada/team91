@@ -33,3 +33,11 @@ span{
 .error{
     background-color:#BBFFFF;
 }
+
+h4 {
+    padding: 1rem 2rem;
+    color: rgb(255, 255, 255);
+    background: rgb(216, 140, 242);
+    -webkit-box-shadow: 5px 5px 0 #038989;
+    box-shadow: 5px 5px 0 #015d5c;
+}

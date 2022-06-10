@@ -24,9 +24,14 @@ class EntryController extends Controller
     {
         $event_category_id=$request->event_category_id;
         if(empty($event_category_id)){
-            $events = Event::orderBy('created_at', 'desc')->get(); 
+            $events = Event::orderBy('created_at', 'desc')
+            ->where('status' ,'=', 2)
+            ->get(); 
         } else {
-            $events = Event::where('event_category', $event_category_id)->orderBy('created_at', 'desc')->get();
+            $events = Event::where('event_category', $event_category_id)
+            ->where('status' ,'=', 2)
+            ->orderBy('created_at', 'desc')
+            ->get();
         }
         // $all_events = Event::orderBy('created_at', 'desc')->get();
         //リレーション

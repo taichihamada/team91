@@ -21,6 +21,7 @@
 
   <!-- イベント詳細 -->
   <div class="item">
+      <pre>
       <p>タイトル：{{$event->event_name}}</p>
       <p>カテゴリー：{{$categories[$event->event_category]}}</p>
       <p>イベント詳細：{{$event->overview}}</p>
@@ -30,6 +31,7 @@
       <p>申込開始日：{{$event->period_start}}</p>
       <p>申込締切日：{{$event->period_end}}</p>
       <p>備考：{{$event->remarks}}</p>
+      </pre>
     </div>
 
   <!-- 申込ボタン -->

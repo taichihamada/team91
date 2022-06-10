@@ -29,9 +29,13 @@
                </div>
             <form action="{{ url('/login/update') }}" method="POST">
             @csrf
-            @if(session('message'))
+            @if($errors->any())
                 <div class="alert alert-danger">
-                {{ session('message') }}
+                    <ul style="list-style: none;">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
             <input type="hidden" name="reset_token" value="{{ $reset_token }}">

@@ -91,14 +91,14 @@
                 <td><a href="/entry/summry/{{$event->id}}">{{$event->event_name}}</a></td>
                 <td>{{$categories[$event->event_category]}}</td>
                 <td>{{$event->event_date}}</td>
-                <td>{{$event->period_start}}～{{$event->period_start}}</td>
+                <td>{{$event->period_start}}～{{$event->period_end}}</td>
                 @if (isset($event->entry->created_at))
                   <td><font color="red">申込済</font></td>
                 @else
                   <td></td>
                 @endif 
               </tr>
-                @endforeach
+              @endforeach
             </table>
         </div>
       </div>

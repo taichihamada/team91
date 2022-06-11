@@ -38,7 +38,7 @@
             </div>
 
             <div style="width: 300px; text-align:left; margin: 10px auto;">
-                <form action="/event/registerConfirm" method="post">
+                <form action="/event/registerconfirm" method="post">
                     @csrf
                     <div class="form-group">
                         イベント名：<input class="form-control" type="text" name="event_name" value="{{ old('event_name') }}" placeholder="">

@@ -22,6 +22,7 @@
 
     <!-- イベント詳細 -->
     <div class="item">
+      <pre>
       <p>タイトル：{{$event->event_name}}</p>
       <p>カテゴリー：{{$categories[$event->event_category]}}</p>
       <p>イベント詳細：{{$event->overview}}</p>
@@ -31,9 +32,9 @@
       <p>申込開始日：{{$event->period_start}}</p>
       <p>申込締切日：{{$event->period_end}}</p>
       <p>備考：{{$event->remarks}}</p>
+      </pre>
     </div>
 
-  <!-- イベント申込ボタン(1回でも申込したイベントの場合、日付を超えたイベント場合は申込確認ボタンが表示されない様にする) -->
   <!-- イベント申込ボタン(1回でも申込したイベントの場合、日付を超えたイベント場合は申込確認ボタンが表示されない様にする) -->
   @if(1 > count($entry))
   @if($event->event_date > now())

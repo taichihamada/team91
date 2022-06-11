@@ -71,15 +71,15 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
     Route::get('/event/serch', [EventController::class, 'serch'])->name('serch');
 
     Route::get('/event/register',[EventController::class,'register'])->name('register');
-    Route::post('/event/registerConfirm',[EventController::class,'registerConfirm']);
+    Route::post('/event/registerconfirm',[EventController::class,'registerconfirm']);
 
-    Route::post('/event/eventRegister',[EventController::class,'eventRegister']);
+    Route::post('/event/eventregister',[EventController::class,'eventregister']);
 
     Route::get('/event/update/{id}',[EventController::class,'update']);
-    Route::post('/event/updateConfirm',[EventController::class,'updateConfirm']);
-    Route::post('/event/updateRegister',[EventController::class,'updateRegister']);
+    Route::post('/event/updateconfirm',[EventController::class,'updateconfirm']);
+    Route::post('/event/updateregister',[EventController::class,'updateregister']);
 
-    Route::get('/event/eventDelete/{id}',[EventController::class,'eventDelete']);
+    Route::get('/event/eventdelete/{id}',[EventController::class,'eventdelete']);
 
     Route::get('/event/entrylist/{id}',[EventController::class,'entrylist']);
 });

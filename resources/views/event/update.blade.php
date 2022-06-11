@@ -37,7 +37,7 @@
             </div>
 
             <div style="width: 300px; text-align:left; margin: 10px auto;">
-                <form action="/event/updateConfirm" method="post">
+                <form action="/event/updateconfirm" method="post">
                     @csrf
                     <div class="form-group">
                         イベント名：<input class="form-control" type="text" name="event_name" value="{{ old('event_name',$event->event_name)}}" placeholder="">
@@ -79,7 +79,7 @@
                         <button type="submit" class="btn btn-secondary">確認画面へ進む</button>
                     </div>
                     <div class="form-group" style="text-align:center;">
-                            <a href="/event/eventDelete/{{$event->id}}"><button type="button" class="btn btn-secondary">削除</button></a>
+                            <a href="/event/eventdelete/{{$event->id}}"><button type="button" class="btn btn-secondary">削除</button></a>
                     </div>
                     <input type="hidden" name="id" value="{{$event->id}}">
                 </form>

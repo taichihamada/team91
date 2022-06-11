@@ -19,19 +19,23 @@
 
         <!-- Styles -->
         <!-- <link href="{{ asset('css/login.css') }}" rel="stylesheet"> -->
-        <link href="css/login.css" rel="stylesheet">
+        <link href="/css/login.css" rel="stylesheet">
     </head>
     <body class="password">
         <div class="inner" style="width: 800px; padding: 80px; margin: 100px auto;  border: 1px solid 333333; text-align:center;">
-            <h4>パスワード再発行</h4><hr><br>
+            <h4>パスワード再発行</h4><br>
                <div style="text-align:right; margin-bottom: 1px">
                    <font size="2">(注)半角英数を含む8文字<br /></font><br>
                </div>
             <form action="{{ url('/login/update') }}" method="POST">
             @csrf
-            @if(session('message'))
+            @if($errors->any())
                 <div class="alert alert-danger">
-                {{ session('message') }}
+                    <ul style="list-style: none;">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
             <input type="hidden" name="reset_token" value="{{ $reset_token }}">

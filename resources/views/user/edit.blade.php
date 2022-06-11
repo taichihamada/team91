@@ -31,6 +31,16 @@
             </div>
         </form>
         <a href="/user/delete" class="btn btn-secondary">削除</a>
+        <br></br>
+        @if ($errors->any())
+            <div class="card-text text-left alert alert-danger">
+            <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+            </div>
+            @endif
     </div>
     <div class="a-user">
     <a href="/user/list">ユーザー一覧画面へ</a>

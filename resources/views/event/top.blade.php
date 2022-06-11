@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" >
 
     <!-- タイトル（タブに表示される） -->
-    <title>{{ config('app.name','Laravel')}}</title>
+    <title>イベント一覧</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -26,7 +26,7 @@
     <!-- 検索エリア -->
     <div class="search-area">
         <form action="/event/serch" method="get">
-            <input type="search" class="form-control" placeholder="イベント検索" name="keyword" value="">
+            <input type="search" class="form-control" placeholder="イベント名・開催日時で検索" name="keyword" value="">
             <button type="submit" class="btn btn-secondary">検索</button>
         </form>
     </div>

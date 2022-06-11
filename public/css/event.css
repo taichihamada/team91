@@ -33,12 +33,16 @@ body{
     width: 160px;
     margin-left: 0;
     min-width: 180px;
-    text-align: center;
+    text-align: left;
 }
 
 .container .side ul{
     list-style: none;
     padding-left: 0px;
+}
+
+.container .side ul .nav-item{
+    padding-bottom: 10px;
 }
 
 .registerList.table{
@@ -70,7 +74,7 @@ body{
 }
 
 .side .logout{
-    margin-top: 200px;
+    margin-top: 100px;
     text-align: center;
 }
 
@@ -79,4 +83,8 @@ body{
     text-align: left;
     text-decoration: underline;
     text-decoration-color: magenta;
+}
+
+.container .main .registerList .table{
+    font-size: smaller;
 }

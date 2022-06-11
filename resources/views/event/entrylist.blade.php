@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" >
 
     <!-- タイトル（タブに表示される） -->
-    <title>{{ config('app.name','Laravel')}}</title>
+    <title>【{{$event->event_name}}】エントリー一覧</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -29,13 +29,13 @@
             <ul>
                 <li class="nav-item"><a href="/event/register">新規イベント登録</a></li>
                 <li class="nav-item"><a href="/user/list">ユーザー一覧</a></li>
-                <li class="nav-item"><a href="/logout">ログアウト</a></li>
+                <li class="nav-item logout"><a href="/logout" class="btn btn-dark">ログアウト</a></li>
             </ul>
         </div>
 
         <div class="main">
             <div style="text-align:center;">
-                <h4>{{$event->event_name}}エントリー一覧</h4>
+                <h4>【{{$event->event_name}}】エントリー一覧</h4>
             </div>
 
             <div class="entryList">

@@ -131,14 +131,25 @@ class LoginController extends Controller
     //パスワードのアップデート後、ログイン画面を表示
     public function update(Request $request)   
     {
-        $validator = Validator::make($request->all(),[
-            'password' => 'required|min:8|regex:/^(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]/|confirmed'
-        ]);
-        
-        //入力値が英数字8文字以上かバリデーションしている
-        if ($validator->fails()) {
-            return redirect()->back()->with('message','半角英数字で8文字以上を入れて下さい。');
-        }
+            $rulus = [
+                'password' => [
+                    'required','min:8','regex:/^(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]/'],
+                'password_confirmation' => [
+                    'required','same:password',
+                ],
+              ];
+            
+              $message = [
+                'password.required' => '・パスワードを入力してください',
+                'password.min'=> '・8文字以上必要です',
+                'password.regex' => '・半角英数で入力してください',
+                'password_confirmation.required' => '・パスワード確認用は必須です',
+                'password_confirmation.same' => '・新しいパスワードと新しいパスワード（確認用）が一致しません。'
+              ];
+              $validator = Validator::make($request->all(), $rulus, $message);
+              if ($validator->fails()) {
+                 return redirect()->back()->withErrors($validator);
+              }
           
 
        //tokenが一致してるかの処理

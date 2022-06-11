@@ -97,6 +97,13 @@ class Usercontroller extends Controller
         $validator = Validator::make($request->all(), $rules, $message);
 
         if ($validator->fails()){
+            $Duser = User::where('id', '=', $request->id)->first();
+            if(isset($Duser)){
+                return redirect('/user/edit/'.$request->id)
+            ->withErrors($validator)
+            ->withInput();
+            exit;
+            }
             return redirect('/user/register')
             ->withErrors($validator)
             ->withInput();

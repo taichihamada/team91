@@ -55,7 +55,7 @@ Route::group(['middleware'=>['auth','can:admin-only']],function(){
     // 登録されたユーザーを一覧表示
     Route::get('/user/list', [Usercontroller::class, 'userlist']);
     // 誰の情報を更新するかを選択する更新ボタン
-    Route::get('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('user_edit');
+    Route::any('/user/edit/{id}', [Usercontroller::class, 'edit'])->name('user_edit');
     // 更新画面からの更新ボタン
     Route::post('/user/edit', [Usercontroller::class, 'useredit']);
     // 検索ボタン

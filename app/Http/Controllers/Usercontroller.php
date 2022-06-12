@@ -84,19 +84,26 @@ class Usercontroller extends Controller
         $rules = [
             'name' => 'required',
             'phone' => 'digits_between:8,11',
-            'email' => ['email', Rule::unique('users')->ignore($request->id, 'id')],
+            'email' => ['email:dns', Rule::unique('users')->ignore($request->id, 'id')],
             'userAuthority' => 'required'
         ];
         $message = [
             'name.required' => '名前を入力してください',
-            'phone.digits_between' => '電話番号は8~11桁の数値で入力してください',
+            'phone.digits_between' => '電話番号は8~11桁の半角数値で入力してください',
             'email.email' => '有効なメールアドレスを入力してください',
             'email.unique' => 'このメールアドレスは既に使用されています',
-            'userAuthority.required' => '入力してください'
+            'userAuthority.required' => '権限を選択してください'
         ];
         $validator = Validator::make($request->all(), $rules, $message);
 
         if ($validator->fails()){
+            $Duser = User::where('id', '=', $request->id)->first();
+            if(isset($Duser)){
+                return redirect('/user/edit/'.$request->id)
+            ->withErrors($validator)
+            ->withInput();
+            exit;
+            }
             return redirect('/user/register')
             ->withErrors($validator)
             ->withInput();

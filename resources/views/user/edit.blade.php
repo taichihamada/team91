@@ -24,6 +24,7 @@
                 <input class="form-control" type="text" name="phone" value="{{$user->phone}}">
                 <input class="form-control" type="text" name="email" value="{{$user->email}}">
                 <select class="form-control" name="userAuthority">
+                    <option value="">@php $ans = $user['userAuthority'] < 2 ? '今の権限は「管理者」です' : '今の権限は「ユーザー」です'; echo $ans @endphp（下記から権限を再選択してください）</option>
                     <option value="1">管理者</option>
                     <option value="2">ユーザー</option>
                 </select>
@@ -31,6 +32,16 @@
             </div>
         </form>
         <a href="/user/delete" class="btn btn-secondary">削除</a>
+        <br></br>
+        @if ($errors->any())
+            <div class="card-text text-left alert alert-danger">
+            <ul class="mb-0">
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+            </div>
+            @endif
     </div>
     <div class="a-user">
     <a href="/user/list">ユーザー一覧画面へ</a>

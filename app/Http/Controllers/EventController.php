@@ -59,11 +59,11 @@ class EventController extends Controller
             'event_name' => 'required',
             'event_category' => 'integer',
             'overview' => 'required',
-            'event_date' => 'date',
+            'event_date' => 'date|after:period_end',
             'place' => 'required',
             'price' => 'integer',
-            'period_start' => 'date',
-            'period_end' => 'date',
+            'period_start' => 'date|after:today',
+            'period_end' => 'date|after:period_start',
             'remarks' => 'required',
         ];
         
@@ -72,10 +72,13 @@ class EventController extends Controller
             'event_category.integer' => '項目の中から選択してください',
             'overview.required' => 'イベントの詳細を入力してください',
             'event_date.date' => '日時を入力してください',
+            'event_date.after' => '申込締切日より後の日付を入力してください',
             'place.required' => '場所を入力してください',
             'price.integer' => '金額を入力してください',
             'period_start.date' => '申込開始日を入力してください',
+            'period_start.after' => '今日より後の日付を入力してください',
             'period_end.date' => '申込締切日を入力してください',
+            'period_end.after' =>'申込開始日より後の日付を入力してください',
             'remarks.required' => '備考欄を入力してください',
         ];
 
@@ -137,11 +140,11 @@ class EventController extends Controller
             'event_name' => 'required',
             'event_category' => 'integer',
             'overview' => 'required',
-            'event_date' => 'date',
+            'event_date' => 'date|after:period_end',
             'place' => 'required',
             'price' => 'integer',
-            'period_start' => 'date',
-            'period_end' => 'date',
+            'period_start' => 'date|after:today',
+            'period_end' => 'date|after:period_start',
             'remarks' => 'required',
         ];
         
@@ -150,10 +153,13 @@ class EventController extends Controller
             'event_category.integer' => '項目の中から選択してください',
             'overview.required' => 'イベントの詳細を入力してください',
             'event_date.date' => '日時を入力してください',
+            'event_date.after' => '申込締切日より後の日付を入力してください',
             'place.required' => '場所を入力してください',
             'price.integer' => '金額を入力してください',
             'period_start.date' => '申込開始日を入力してください',
+            'period_start.after' => '今日より後の日付を入力してください',
             'period_end.date' => '申込締切日を入力してください',
+            'period_end.after' =>'申込開始日より後の日付を入力してください',
             'remarks.required' => '備考欄を入力してください',
         ];
 

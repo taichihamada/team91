@@ -24,6 +24,7 @@
                 <input class="form-control" type="text" name="phone" value="{{$user->phone}}">
                 <input class="form-control" type="text" name="email" value="{{$user->email}}">
                 <select class="form-control" name="userAuthority">
+                    <option value="">@php $ans = $user['userAuthority'] < 2 ? '今の権限は「管理者」です' : '今の権限は「ユーザー」です'; echo $ans @endphp（下記から権限を再選択してください）</option>
                     <option value="1">管理者</option>
                     <option value="2">ユーザー</option>
                 </select>

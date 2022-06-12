@@ -23,6 +23,7 @@
                 <input class="form-control" type="text" name="phone" value="{{old('phone')}}"placeholder="電話番号">
                 <input class="form-control" type="text" name="email" value="{{old('email')}}"placeholder="メールアドレス">
                 <select class="form-control" name="userAuthority" value="{{old('userAuthority')}}">
+                    <option value="">権限を選択してください</option>
                     <option value="1">管理者</option>
                     <option value="2">ユーザー</option>
                 </select>

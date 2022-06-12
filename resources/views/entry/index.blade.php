@@ -42,13 +42,13 @@
                   モチベーションの向上に繋がる事を期待しています。</h3>
           </div>
 
-          <!-- ホーム画面 検索 -->
+          <!-- ホーム画面 検索(絞込) -->
           <div class="home">
             <form method="get" action="{{route('entry')}}">
             <select class="form-select" name="event_category_id">
             <option value="">カテゴリーを選んでください
-              @foreach($all_events as $event)
-                <option value={{$event->event_category}}>{{$event->id}}
+              @foreach($categories as $key => $value)
+                <option value="{{$key}}">{{$value}}</option>
               @endforeach
             </select>
             <div class="search1">

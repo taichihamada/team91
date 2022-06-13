@@ -38,11 +38,7 @@ class EntryController extends Controller
         $all_events = Event::orderBy('created_at', 'desc')->with('entry')->get();
         // dd($all_events);
         $categories = Event::CATEGORIES;
-        return view('entry.index', [
-            'events' => $events,
-            'all_events' => $all_events,
-            'categories' => $categories
-        ]);
+        return view('entry.index', ['events' => $events,'all_events' => $all_events,'categories' => $categories]);
     }
 
     // イベント詳細画面
@@ -53,7 +49,7 @@ class EntryController extends Controller
         // dd(count($entry));
         $event = Event::find($request->id);
         $categories = Event::CATEGORIES;
-        return view('entry.summry', ['event'=>$event,'entry'=>$entry,'categories' => $categories]);
+        return view('entry.summry', ['event' => $event,'entry' => $entry,'categories' => $categories]);
     }
 
     // イベント申込確認画面
@@ -79,7 +75,7 @@ class EntryController extends Controller
         // ログイン機能ができたら消す
         // $user = User::find(1);
         $user_date = User::where('id',$user->id)->first();
-        Mail::send('entry.emailtext', ['user' => $user_date,'event_name'=>$request->event_name], function ($m) use ($user) {
+        Mail::send('entry.emailtext', ['user' => $user_date,'event_name' => $request->event_name], function ($m) use ($user) {
             $m->to($user->email)
               ->subject('イベント申込完了');
         });

@@ -35,8 +35,10 @@
             <p>イベント名：{{$event['event_name']}}</p>
             <input class="form-control" value="{{$event['event_name']}}" type="hidden" name="event_name">
             <p>イベント種別：{{$categories[$event['event_category']]}}</p>
-            <input class="form-control" value="{{$event['event_category']}}" type="hidden" name="event_category">       
-            <p>イベント詳細：{{$event['overview']}}</p>
+            <input class="form-control" value="{{$event['event_category']}}" type="hidden" name="event_category">
+            <pre>   
+                <p>イベント詳細：{{$event['overview']}}</p>
+            </pre>
             <input class="form-control" value="{{$event['overview']}}" type="hidden" name="overview">           
             <p>開催日時：{{$event['event_date']}}</p>
             <input class="form-control" value="{{$event['event_date']}}" type="hidden" name="event_date">
@@ -53,7 +55,9 @@
             <input class="form-control" value="{{$event['status']}}" type="hidden" name="status">
             <br>
             <p></p>
-            <p>備考欄：{{$event['remarks']}}</p>
+            <pre>
+                <p>備考欄：{{$event['remarks']}}</p>
+            </pre>
             <input class="form-control" value="{{$event['remarks']}}" type="hidden" name="remarks">
 
             <button type="submit" class="btn btn-secondary" name="send">登録</button>

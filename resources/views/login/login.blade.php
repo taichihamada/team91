@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -23,10 +23,11 @@
         <link rel="stylesheet" href="/css/login.css">
     </head>
     <body class="login">
-    <div style="width: 500px; text-align:center; margin: 100px auto;">
-        <h3 class="heading">イベント申し込みサイト</h3><br>
-        <form method="POST"  action="{{route('authenticate') }}">
-            @csrf
+    <div class="loginform" style="width: 500px; text-align:center; margin: 100px auto;">
+        <div class="container">
+                <h3 class="heading">イベント申し込みサイト</h3><br>
+            <form method="POST"  action="{{route('authenticate') }}">
+                @csrf
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -42,25 +43,23 @@
                     <input class="form-control form-control-lg" type="text" name="email" placeholder="メールアドレス"  value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
-                    <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="パスワード" value="{{ old('password') }}">
+                        <input class="form-control form-control-lg" type="password" id="password" name="password" placeholder="パスワード" value="{{ old('password') }}">
                     <div style=text-align:left;>
-                    <input type="checkbox" id="password-check">
-                    パスワードを表示する
+                        <input type="checkbox" id="password-check">
+                        パスワードを表示する
                     </div>
-
                 </div>
-
                 <div>
                     <button type="submit" class="btn btn-dark">ログイン</button>
                 </div>
-        
                 <div class="contactLink">
                     <div class="contactLink" style="text-align:center;">
                         <font size="2"><a href="{{ route('index') }}" class="text-dark"> パスワードをリセットする </a></font>
                     </div>
                 </div>
-        </form>
+            </form>
+        </div>
+        <script src="/js/login.js" ></script>
     </div>
-    <script src="/js/login.js" ></script>
     </body>
 </html>

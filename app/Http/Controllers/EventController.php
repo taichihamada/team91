@@ -64,9 +64,12 @@ class EventController extends Controller
             'price' => 'integer',
             'period_start' => 'date|after:today',
             'period_end' => 'date|after:period_start',
-            'remarks' => 'required',
+            // 'remarks' => 'required',
         ];
-        
+        if ($request->status === '1') {
+            // statusが"1"だった時のみremarksを必須に
+            $rules['remarks'] = 'required';
+        }
         $message = [
             'event_name.required' => 'イベント名を入力してください',
             'event_category.integer' => '項目の中から選択してください',
@@ -145,9 +148,12 @@ class EventController extends Controller
             'price' => 'integer',
             'period_start' => 'date|after:today',
             'period_end' => 'date|after:period_start',
-            'remarks' => 'required',
+            // 'remarks' => 'required',
         ];
-        
+        if ($request->status === '1') {
+            // statusが"1"だった時のみremarksを必須に
+            $rules['remarks'] = 'required';
+        }
         $message = [
             'event_name.required' => 'イベント名を入力してください',
             'event_category.integer' => '項目の中から選択してください',

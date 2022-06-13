@@ -46,7 +46,7 @@
           <div class="home">
             <form method="get" action="{{route('entry')}}">
             <select class="form-select" name="event_category_id">
-            <option value="">カテゴリーを選んでください
+            <option value="">イベント種別を選んでください
               @foreach($categories as $key => $value)
                 <option value="{{$key}}">{{$value}}</option>
               @endforeach
@@ -78,9 +78,9 @@
           <!-- ホーム画面 イベント一覧 表 -->
             <table class="table">
               <tr>
-                <th>id</th>
-                <th>タイトル</th>
-                <th>カテゴリー</th>
+                <th>イベント番号</th>
+                <th>イベント名</th>
+                <th>イベント種別</th>
                 <th>開催日時</th>
                 <th>申込期間</th>
                 <th>申込状況</th>
@@ -92,7 +92,7 @@
                 <td>{{$categories[$event->event_category]}}</td>
                 <td>{{$event->event_date}}</td>
                 <td>{{$event->period_start}}～{{$event->period_end}}</td>
-                @if (isset($event->entry->created_at))
+                @if(isset($event->entry->created_at))
                   <td><font color="red">申込済</font></td>
                 @else
                   <td></td>

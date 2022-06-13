@@ -22,11 +22,11 @@
   <!-- イベント詳細 -->
   <div class="item">
       <pre>
-      <p>タイトル：{{$event->event_name}}</p>
-      <p>カテゴリー：{{$categories[$event->event_category]}}</p>
+      <p>イベント名：{{$event->event_name}}</p>
+      <p>イベント種別：{{$categories[$event->event_category]}}</p>
       <p>イベント詳細：{{$event->overview}}</p>
       <p>開催日時：{{$event->event_date}}</p>
-      <p>場所：{{$event->place}}</p>
+      <p>開催場所：{{$event->place}}</p>
       <p>参加料金：{{$event->price}}円</p>
       <p>申込開始日：{{$event->period_start}}</p>
       <p>申込締切日：{{$event->period_end}}</p>

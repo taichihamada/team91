@@ -41,3 +41,9 @@ h4 {
     -webkit-box-shadow: 5px 5px 0 #038989;
     box-shadow: 5px 5px 0 #015d5c;
 }
+
+@media screen and (max-width:767px){
+    .loginform{
+        width: 100%!important;
+    }
+}

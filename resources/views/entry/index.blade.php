@@ -93,7 +93,11 @@
                 <td>{{$event->event_date}}</td>
                 <td>{{$event->period_start}}～{{$event->period_end}}</td>
                 @if(isset($event->entry->created_at))
-                  <td><font color="red">申込済</font></td>
+                  @if($event->entry->user_id == Auth::id())
+                    <td><font color="red">申込済</font></td>
+                  @else
+                    <td></td>
+                  @endif
                 @else
                   <td></td>
                 @endif 

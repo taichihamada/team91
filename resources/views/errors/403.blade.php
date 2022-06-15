@@ -10,6 +10,7 @@
       background: radial-gradient(#F2B9A1, #EA6264) fixed;
     }
     .error-wrap {
+      margin-top:5%;
       position: absolute;
       top: 100%;
       left: 50%;

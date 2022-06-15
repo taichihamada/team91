@@ -5,12 +5,23 @@
     color: #fff;
 }
 
+.loginform{
+    width: 500px;
+    text-align: center;
+    margin: 100px auto;
+}
+
 .index {
     background: radial-gradient(#CCFFFF, #66CCFF) fixed;
 
 }
 
-.inner {
+.index-inner{
+    width: 800px;
+    padding: 80px;
+    margin: 100px auto;
+    border: 1px solid #333333;
+    text-align:center;
     background-color: whitesmoke;
 }
 
@@ -22,8 +33,41 @@
     background: radial-gradient(#FFCCFF, #FF82B2) fixed;
 }
 
+.notice-inner{
+    width: 800px;
+    padding: 10px;
+    margin: 100px auto;
+    border: 1px solid #333333; text-align:left;
+    background-color: whitesmoke;
+}
+
+.notice-text{
+    text-align:center;
+    padding-bottom: 80px;
+    margin-bottom: 1px;
+}
+
+p.notice-text{
+    font-size: 100%;
+    padding: 1px;
+}
+
 .password{
     background: radial-gradient(#CCFFFF, #66CCFF) fixed;
+}
+
+.password-inner{
+    width: 800px;
+    padding: 80px;
+    margin: 100px auto;
+    border: 1px solid 333333;
+    text-align:center;
+    background-color: whitesmoke;
+}
+
+.password-text{
+    text-align:right;
+    margin-bottom: 1px;
 }
 
 span{
@@ -34,6 +78,21 @@ span{
     background-color:#BBFFFF;
 }
 
+.error-text{
+    text-align:center;
+    padding: 90px;
+    margin-bottom: 1px;
+}
+
+.error-inner{
+    width: 800px;
+    padding: 10px;
+    margin: 100px auto;
+    border: 1px solid #333333;
+    text-align:center;
+    background-color: whitesmoke;
+}
+
 h4 {
     padding: 1rem 2rem;
     color: rgb(255, 255, 255);
@@ -42,8 +101,40 @@ h4 {
     box-shadow: 5px 5px 0 #015d5c;
 }
 
+
+
 @media screen and (max-width:767px){
     .loginform{
-        width: 100%!important;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:767px){
+    .notice-inner{
+        width: 100%;
+        padding: 1px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .error-inner{
+        width: 100%;
+        padding: 1px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .password-inner{
+        width: 100%;
+        padding: 50px;
+        margin:100px auto;
+    }
+}
+
+@media screen and (max-width:767px){
+    .index-inner{
+        width: 100%;
+        padding: 50px;
+        margin:100px auto;
     }
 }

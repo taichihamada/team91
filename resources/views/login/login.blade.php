@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="/css/login.css">
     </head>
     <body class="login">
-    <div class="loginform" style="width: 500px; text-align:center; margin: 100px auto;">
+    <div class="loginform">
         <div class="container">
                 <h3 class="heading">イベント申し込みサイト</h3><br>
             <form method="POST"  action="{{route('authenticate') }}">

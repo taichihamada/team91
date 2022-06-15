@@ -40,7 +40,7 @@
         @forelse($user as $value)
         <table>
             <div>
-                <td class="name" style="padding-top: 30px;">{{$value->name}} @php $ans = $value['userAuthority'] < 2 ? '(管理者)' : '（ユーザー）'; echo $ans @endphpさん<p class="tdp"></p></td>
+                <td class="name" style="padding-top: 30px;">{{$value->name}} さん@php $ans = $value['userAuthority'] < 2 ? '(管理者)' : '（ユーザー）'; echo $ans @endphp<p class="tdp"></p></td>
                 <td class="button"><button onclick="location.href='/user/edit/{{$value->id}}'" class="btn btn-secondary btn-sm">更新</button></td>
             </div>
         </table>

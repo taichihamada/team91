@@ -16,6 +16,10 @@ body{
     margin-bottom: 40px;
 }
 
+p.user{
+    margin-right: 587px;
+}
+
 .link{
     display: flex;
     flex-direction: column;

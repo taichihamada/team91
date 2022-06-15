@@ -29,6 +29,7 @@
             <ul>
                 <li class="nav-item"><a href="/event/register">新規イベント登録</a></li>
                 <li class="nav-item"><a href="/user/list">ユーザー一覧</a></li>
+                <li class="nav-item"><a href="/event/top">イベント一覧</a></li>
                 <li class="nav-item logout"><a href="/logout" class="btn btn-dark">ログアウト</a></li>
             </ul>
         </div>

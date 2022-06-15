@@ -23,9 +23,9 @@
         <link href="/css/login.css" rel="stylesheet">
     </head>
     <body class="error">
-        <div class="inner" style="width: 800px; padding: 10px; margin: 100px auto;  border: 1px solid #333333; text-align:center;">
+        <div class="error-inner">
             <h2><span>URLが無効です。</span></h2><hr><br>
-               <div style="text-align:center; padding: 90px; margin-bottom: 1px">
+               <div class="errortext">
                    <font size="4">お送りしましたパスワード再発行URLの有効時間が切れました。<br>
                                 もう一度、メールの発行を行ってください。<br /></font>
                </div>

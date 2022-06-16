@@ -73,7 +73,7 @@
                         <label for="release2" class="form-check-label">公開</label>
                         <br>
                         <p></p>
-                        備考欄：<textarea class="form-control" name="remarks" value="" placeholder="非公開の場合は理由を記入　公開の場合は「OK」記入">{{ old('remarks') }}</textarea>
+                        備考欄：<textarea class="form-control" name="remarks" value="" placeholder="非公開の場合は理由を記入　公開の場合は「OK」を記入">{{ old('remarks') }}</textarea>
                         <p class="error">@if ($errors->has('remarks')){{$errors->first('remarks')}} @endif</p> 
                     </div>
                     <div style="text-align:center;">

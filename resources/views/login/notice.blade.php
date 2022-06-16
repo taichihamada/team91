@@ -25,8 +25,8 @@
         <div class="notice-inner">
             <h2>パスワード再発行</h2><hr><br>
                <div class="notice-text">
-                   <p class="notice-text">パスワード再設定用URLをご登録のメールアドレス宛にお送りしました。<br>
-                                お送りしたメールに従って、パスワードの再発行を行ってください。<br /></p>
+                   <p class="notice-text">パスワード再設定用URLをご登録の</p><p class="notice-text">メールアドレス宛にお送りしました。</p><br>
+                                <p class="notice-text">お送りしたメールに従って、</p><p class="notice-text">パスワードの再発行を行ってください。</p>
                </div>
         </div>
     </body>

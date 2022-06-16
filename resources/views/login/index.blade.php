@@ -24,8 +24,8 @@
     <body class="index">
         <div class="index-inner">
             <h4>パスワード再発行メール送信フォーム</h4><br>
-            <font size="2">ご登録いただいてるメールアドレスを入力の上、「送信ボタン」を押してください。<br />
-            パスワード再設定用URLが記載されたメールをお送りします。<br /></font><br>
+            <font size="2"><div class="aks">ご登録いただいてるメールアドレスを入力の上、</div><div class="aks">「送信ボタン」を押してください。</div>
+            <div class="aks">パスワード再設定用URLが記載された</div><div class="aks">メールをお送りします。</div><br></font><br>
             
             <form action="{{ url('/login/posts') }}" method="POST">
             @csrf

@@ -119,7 +119,11 @@ class EventController extends Controller
         $event->period_end = $request->period_end;
         $event->user_id = Auth::id();
         $event->status = $request->status;
-        $event->remarks = $request->remarks;
+        //$event->remarks = $request->remarks;
+        if ($request->status === '1') {
+            // statusが"1"だった時のみremarksを必須に
+            $event->remarks = $request->remarks;
+        }
         $event->save();
 
         return redirect('event/top');
@@ -201,7 +205,11 @@ class EventController extends Controller
         $event->period_end = $request->period_end;
         $event->user_id = Auth::id();
         $event->status = $request->status;
-        $event->remarks = $request->remarks;
+        //$event->remarks = $request->remarks;
+        if ($request->status === '1') {
+            // statusが"1"だった時のみremarksを必須に
+            $event->remarks = $request->remarks;
+        }
         $event->save();
 
         return redirect('event/top');

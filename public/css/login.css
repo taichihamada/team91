@@ -25,8 +25,12 @@
     background-color: whitesmoke;
 }
 
+.aks {
+    display: inline-block;
+}
+
 .heading{
-    color: #fff8dc;
+    color: whitesmoke;
 }
 
 .notice{
@@ -50,6 +54,8 @@
 p.notice-text{
     font-size: 100%;
     padding: 1px;
+    display: inline-block;
+    line-height: 0.5em;
 }
 
 .password{
@@ -86,7 +92,7 @@ span{
 
 .error-inner{
     width: 800px;
-    padding: 10px;
+    padding: 100px;
     margin: 100px auto;
     border: 1px solid #333333;
     text-align:center;

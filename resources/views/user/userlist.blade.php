@@ -14,7 +14,7 @@
 
 </head>
 <body>
-<div style="width: 800px; text-align:center; margin: 100px auto;">
+<div style="width: 850px; text-align:center; margin: 100px auto;">
     <div>
         <h4 class="users-title">ユーザー一覧画面</h4>
         <div class="link">
@@ -36,10 +36,11 @@
             </form>
         </div>
         <div class="users">
+        <p class="user">○ユーザーの名前(ユーザー権限)</p>
         @forelse($user as $value)
         <table>
             <div>
-                <td class="name" style="padding-top: 30px;">{{$value->name}} さん<p class="tdp"></p></td>
+                <td class="name" style="padding-top: 30px;">{{$value->name}} さん@php $ans = $value['userAuthority'] < 2 ? '(管理者)' : '（ユーザー）'; echo $ans @endphp<p class="tdp"></p></td>
                 <td class="button"><button onclick="location.href='/user/edit/{{$value->id}}'" class="btn btn-secondary btn-sm">更新</button></td>
             </div>
         </table>

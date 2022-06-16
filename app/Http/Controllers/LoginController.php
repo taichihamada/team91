@@ -60,7 +60,7 @@ class LoginController extends Controller
         }
 
             return redirect('login')->withErrors([
-                    'login_errors' => 'メールアドレスかパスワードが間違っています。',
+                    'login_errors' => 'メールアドレスまたはパスワードが違います。',
                 ]);
     }
 
@@ -103,17 +103,17 @@ class LoginController extends Controller
         //メールに添付のパスワード再発行URL画面を表示
     public function posts(Request $request,$token)
     {   
-       
+        
         $user = User::where('reset_token','=',$request->token)->first();
-       
+        
         // トークンが一致しない場合、エラーメッセージが出る
         if (is_null($user)) {
         return view('login.error');
-       }
+        }
 
 
         $createTime = User::where('reset_token',$request->token)->first();
-       
+        
         //数値型になおす
         $timeTest = time() - strtotime($createTime->created_at_token);
         
@@ -137,30 +137,30 @@ class LoginController extends Controller
                 'password_confirmation' => [
                     'required','same:password',
                 ],
-              ];
+            ];
             
-              $message = [
+            $message = [
                 'password.required' => '・パスワードを入力してください',
                 'password.min'=> '・8文字以上必要です',
                 'password.regex' => '・半角英数で入力してください',
                 'password_confirmation.required' => '・パスワード確認用は必須です',
                 'password_confirmation.same' => '・新しいパスワードと新しいパスワード（確認用）が一致しません。'
-              ];
-              $validator = Validator::make($request->all(), $rulus, $message);
-              if ($validator->fails()) {
-                 return redirect()->back()->withErrors($validator);
-              }
-          
+            ];
+            $validator = Validator::make($request->all(), $rulus, $message);
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator);
+            }
+        
 
        //tokenが一致してるかの処理
-       $user = User::where('reset_token','=',$request->reset_token)->first();
-       
+        $user = User::where('reset_token','=',$request->reset_token)->first();
+        
        // トークンが一致しない場合、エラーメッセージが出る
-       if (is_null($user)) {
-       return redirect()->back()->with('message','もう一度メールを再発行してください。');
-       }
-       $user->password = Hash::make($request['password']);
-       $user->save();
+        if (is_null($user)) {
+        return redirect()->back()->with('message','もう一度メールを再発行してください。');
+        }
+        $user->password = Hash::make($request['password']);
+        $user->save();
 
             return view('login.login');
     }

@@ -22,11 +22,11 @@
         <link href="/css/login.css" rel="stylesheet">
     </head>
     <body class="notice">
-        <div  class="inner" style="width: 800px; padding: 10px; margin: 100px auto;  border: 1px solid #333333; text-align:left;">
+        <div class="notice-inner">
             <h2>パスワード再発行</h2><hr><br>
-               <div style="text-align:center; padding: 90px; margin-bottom: 1px">
-                   <font size="4">パスワード再設定用URLをご登録のメールアドレス宛にお送りしました。<br>
-                                お送りしたメールに従って、パスワードの再発行を行ってください。<br /></font>
+               <div class="notice-text">
+                   <p class="notice-text">パスワード再設定用URLをご登録のメールアドレス宛にお送りしました。<br>
+                                お送りしたメールに従って、パスワードの再発行を行ってください。<br /></p>
                </div>
         </div>
     </body>

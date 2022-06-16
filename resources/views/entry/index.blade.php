@@ -78,28 +78,28 @@
           <!-- ホーム画面 イベント一覧 表 -->
             <table class="table">
               <tr>
-                <th>イベント番号</th>
-                <th>イベント名</th>
-                <th>イベント種別</th>
-                <th>開催日時</th>
-                <th>申込期間</th>
-                <th>申込状況</th>
+                <th nowrap>イベント番号</th>
+                <th nowrap>イベント名</th>
+                <th nowrap>イベント種別</th>
+                <th nowrap>開催日時</th>
+                <th nowrap>申込期間</th>
+                <th nowrap>申込状況</th>
               </tr>
               @foreach($events as $event)
               <tr>
-                <td>{{$event->id}}</td>
+                <td nowrap>{{$event->id}}</td>
                 <td><a href="/entry/summry/{{$event->id}}">{{$event->event_name}}</a></td>
-                <td>{{$categories[$event->event_category]}}</td>
-                <td>{{$event->event_date}}</td>
-                <td>{{$event->period_start}}～{{$event->period_end}}</td>
+                <td nowrap>{{$categories[$event->event_category]}}</td>
+                <td nowrap>{{$event->event_date}}</td>
+                <td nowrap>{{$event->period_start}}～{{$event->period_end}}</td>
                 @if(isset($event->entry->created_at))
                   @if($event->entry->user_id == Auth::id())
-                    <td><font color="red">申込済</font></td>
+                    <td nowrap><font color="red">申込済</font></td>
                   @else
-                    <td></td>
+                    <td nowrap></td>
                   @endif
                 @else
-                  <td></td>
+                  <td nowrap></td>
                 @endif 
               </tr>
               @endforeach

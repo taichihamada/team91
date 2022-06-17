@@ -33,12 +33,13 @@ class EntryController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
         }
+        $entries = Entry::all();
         // $all_events = Event::orderBy('created_at', 'desc')->get();
         //リレーション
         $all_events = Event::orderBy('created_at', 'desc')->with('entry')->get();
         // dd($all_events);
         $categories = Event::CATEGORIES;
-        return view('entry.index', ['events' => $events,'all_events' => $all_events,'categories' => $categories]);
+        return view('entry.index', ['events' => $events,'all_events' => $all_events,'categories' => $categories,'entries' => $entries]);
     }
 
     // イベント詳細画面

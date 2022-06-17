@@ -26,8 +26,8 @@
         <div class="error-inner">
             <h2><span>URLが無効です。</span></h2><hr><br>
                <div class="errortext">
-                   <font size="4">お送りしましたパスワード再発行URLの有効時間が切れました。<br>
-                                もう一度、メールの発行を行ってください。<br /></font>
+                   <font size="4"><div class="aks">お送りしましたパスワード再発行の</div><div class="aks">有効時間が切れました。</div><br>
+                                <div class="aks">もう一度、メールの発行を</div><div class="aks">行ってください。</div><br /></font>            
                </div>
         </div>
         <div class="contactLink">

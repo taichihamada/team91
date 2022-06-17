@@ -93,11 +93,11 @@
                 <td nowrap>{{$event->event_date}}</td>
                 <td nowrap>{{$event->period_start}}～{{$event->period_end}}</td>
                 @if(isset($event->entry->created_at))
-                  @if($event->entry->user_id == Auth::id())
-                    <td nowrap><font color="red">申込済</font></td>
-                  @else
-                    <td nowrap></td>
-                  @endif
+                  @foreach($entries as $entry)
+                    @if($event->id == $entry->event_id && $entry->user_id == Auth::id())
+                      <td nowrap><font color="red">申込済</font></td>
+                    @endif
+                  @endforeach
                 @else
                   <td nowrap></td>
                 @endif 

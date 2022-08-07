@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->increments('id')->comment('ID');
             $table->string('name')->comment('名前');
             $table->string('phone')->comment('電話番号');
-            $table->string('email')->charaset("utf8")->unique()->comment('メールアドレス');
+            $table->string('email')->unique()->comment('メールアドレス');
             $table->tinyInteger('userAuthority')->comment('ユーザー権限');
 
             $table->string('password',128)->nullable()->comment('パスワード');

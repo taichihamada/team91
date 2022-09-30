@@ -19,7 +19,7 @@
     @endif
 
     <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/610e354b42d21a7b18a9270a_41.png" width="150px" height="150px" alt="画像">
-
+ 
     <!-- イベント詳細 -->
     <div class="item">
       <pre>

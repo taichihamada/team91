@@ -84,15 +84,17 @@ body {
     line-height: 20px;
     font-weight: bold;
     margin-bottom: 2;
-    text-align: left;
+    text-align: center;
     color: #008080;
 }
 
 /* ホーム画面 検索 */
- 
 .home form {
-    padding: 2em 2em;
-    margin: 0.5em 0;
+    display:flex;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 50px;
 }
 
 .home .search1 {
@@ -100,7 +102,6 @@ body {
 }
 
 /* イベント詳細 */
-
 .item{
   margin-bottom: 30px;
 }
@@ -109,10 +110,12 @@ body {
   background: #008080;
   color: white;
   font-size:16px;
+  width: 140px;
+  height: 50px;
   font-weight:bold;
   padding: 10px 20px;
   margin: 10 800px;
-  text-align: left;
+  text-align: center;
 }
   
 

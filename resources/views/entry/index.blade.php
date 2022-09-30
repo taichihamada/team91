@@ -20,14 +20,16 @@
           <div class="main-header">
           <div class="button01">
           <!-- ログアウトボタン -->
+          <p style="text-align: right">
           <a href="/logout" class="btn">ログアウト</a>
+          </p>
           </div>
           <!-- ユーザー一覧へボタン(植田さんのユーザー一覧画面へ遷移) -->
           <a href="{{ url('/user/list') }}" class="btn">ユーザー一覧へ</a>
           <!-- イベント一覧へボタン(濱田さんのイベント一覧画面へ遷移) -->
           <a href="{{ url('/event/top') }}" class="btn">イベント一覧へ</a>
 
-          <h1>ホーム</h1>
+          <h1>イベント参加申込</h1>
 
           </div>
 
@@ -52,10 +54,7 @@
               @endforeach
             </select>
             <div class="search1">
-            <input type="submit" class="btn btn-primary" value="絞り込む">
-            <a href="{{route('entry')}}">
-            <button type="button" class="btn btn-primary">すべて表示</button>
-            </a>  
+            <input type="submit" class="btn btn-primary" value="絞り込む">              
             </div>
             </form>
           </div>
@@ -64,7 +63,13 @@
           <div class="home"> 
           <h2>イベント一覧</h2>
 
+          <p style="text-align: right">
+          <a href="{{route('entry')}}">
+            <button type="button" class="btn btn-primary">すべて表示</button>
+          </a>
+
           <!-- ホーム画面 イベント一覧 アイコン -->
+          <p style="text-align: center">
           <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
           <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60743cf651fa45e66a876952_illust_college_student.png" width="120px" height="120px" alt="画像">
           <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
@@ -87,15 +92,15 @@
               </tr>
               @foreach($events as $event)
               <tr>
-                <td nowrap>{{$event->id}}</td>
+                <td nowrap style="text-align:center">{{$event->id}}</td>
                 <td><a href="/entry/summry/{{$event->id}}">{{$event->event_name}}</a></td>
-                <td nowrap>{{$categories[$event->event_category]}}</td>
-                <td nowrap>{{$event->event_date}}</td>
-                <td nowrap>{{$event->period_start}}～{{$event->period_end}}</td>
+                <td nowrap style="text-align:center">{{$categories[$event->event_category]}}</td>
+                <td nowrap style="text-align:center">{{$event->event_date}}</td>
+                <td nowrap style="text-align:center">{{$event->period_start}}～{{$event->period_end}}</td>
                 @if(isset($event->entry->created_at))
                   @foreach($entries as $entry)
                     @if($event->id == $entry->event_id && $entry->user_id == Auth::id())
-                      <td nowrap><font color="red">申込済</font></td>
+                      <td nowrap style="text-align:center"><font color="red">申込済</font></td>
                     @endif
                   @endforeach
                 @else

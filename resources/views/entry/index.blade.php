@@ -19,29 +19,25 @@
           <div class="main">
           <div class="main-header">
           <div class="button01">
+
           <!-- ログアウトボタン -->
           <p style="text-align: right">
           <a href="/logout" class="btn">ログアウト</a>
-          </p>
-          </div>
+
           <!-- ユーザー一覧へボタン(植田さんのユーザー一覧画面へ遷移) -->
+          <p style="text-align: left">
           <a href="{{ url('/user/list') }}" class="btn">ユーザー一覧へ</a>
+
           <!-- イベント一覧へボタン(濱田さんのイベント一覧画面へ遷移) -->
           <a href="{{ url('/event/top') }}" class="btn">イベント一覧へ</a>
-
-          <h1>イベント参加申込</h1>
-
+          </div>
           </div>
 
           <!-- ホーム画面 イベント概要 -->
           <div class="home">
-              <h2>イベント概要</h2>
-              <h3>生徒が気軽に楽しめる・学べるよう毎月数多くのイベントを開催！</h3>
-              <h2>説明</h2>
-              <h3>ひとりでプログラミング学習を進めていく上で、つまずいたりモチベーションが下がってしまう時がどうしてもあると思います。<br>
-                  ここでは、毎月生徒のプログラミング学習に役立つ勉強会や、講師や現役で活躍されているエンジニアによるセミナー、<br>
-                  自分の実力を試すことができる試験、生徒同士の交流会や催事などがあり、外部とのコミュニケーションを図る事で交流を広め、<br>
-                  モチベーションの向上に繋がる事を期待しています。</h3>
+              <h3>ここでは、毎月生徒学習に役立つ勉強会や、現役で活躍されているエンジニアによるセミナー、
+                  実力を試すことができる試験、生徒同士の交流会や催事など生徒が気軽に楽しめる・学べるよう毎月数多くのイベントを開催中！
+              </h3>
           </div>
 
           <!-- ホーム画面 検索(絞込) -->
@@ -53,8 +49,8 @@
                 <option value="{{$key}}">{{$value}}</option>
               @endforeach
             </select>
-            <div class="search1">
-            <input type="submit" class="btn btn-primary" value="絞り込む">              
+            <div class="search2">
+            <input type="submit" class="btn btn-primary" value="絞り込む">       
             </div>
             </form>
           </div>
@@ -70,15 +66,24 @@
 
           <!-- ホーム画面 イベント一覧 アイコン -->
           <p style="text-align: center">
-          <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
           <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60743cf651fa45e66a876952_illust_college_student.png" width="120px" height="120px" alt="画像">
-          <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
           <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60790bb70b611629c6b164e7_62.png" width="120px" height="120px" alt="画像">
-          <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
           <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/61bf09b6c69c24245d6457d3_4.png" width="120px" height="120px" alt="画像">
-          <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
           <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/60a5021cf3c27c4256d87618_70.png" width="120px" height="120px" alt="画像">
-          <img src="https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.0.0/png/iconmonstr-circle-lined.png&r=0&g=0&b=0" width="40px" height="40px" alt="画像">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
 
           <!-- ホーム画面 イベント一覧 表 -->
             <table class="table">

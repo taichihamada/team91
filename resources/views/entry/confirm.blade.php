@@ -13,14 +13,19 @@
 </head>
 <body>
 
+  <div class="item">
   <h1>イベント申込確認フォーム</h1>
+  </div>
 
   <img src="https://uploads-ssl.webflow.com/603c87adb15be3cb0b3ed9b5/624bd4fb51d7e5589581b6c2_94.png" width="150px" height="150px" alt="画像">
   
+  <div class="item">
   <h2>申込内容</h2>
+  </div>
 
   <!-- イベント詳細 -->
   <div class="item">
+      <h3>
       <pre>
       <p>イベント名：{{$event->event_name}}</p>
       <p>イベント種別：{{$categories[$event->event_category]}}</p>
@@ -32,6 +37,7 @@
       <p>申込締切日：{{$event->period_end}}</p>
       <p>備考：{{$event->remarks}}</p>
       </pre>
+      </h3>
     </div>
 
   <!-- 申込ボタン -->

@@ -52,8 +52,8 @@ body {
 }
 
 /* ログアウトボタン */
-.main .main-header .button01 {
-    margin: 10px; 
+.button01 {
+    margin-left: auto;
 }
 
 .home {
@@ -97,13 +97,46 @@ body {
     height: 50px;
 }
 
+/* ホーム画面 絞込ボタン */
 .home .search1 {
-    margin: 10px;
+    display:flex;
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 50px;
+    margin-right: 30px;
 }
 
 /* イベント詳細 */
 .item{
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+}
+
+.item h1 {
+    font-size: 40px;
+    line-height: 2;
+    font-weight: bold;
+    margin-bottom: 2;
+    text-align: left;
+    font-family: system-ui;
+}
+
+.item h2 {
+    font-size: 30px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 2;
+    text-align: left;
+    font-family: system-ui;
+}
+
+.item h3 {
+    font-size: 30px;
+    line-height: 1;
+    font-weight: bold;
+    margin-bottom: 2;
+    text-align: left;
+    font-family: system-ui;
 }
 
 .btn{

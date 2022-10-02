@@ -35,7 +35,8 @@
 
           <!-- ホーム画面 イベント概要 -->
           <div class="home">
-              <h3>ここでは、毎月生徒学習に役立つ勉強会や、現役で活躍されているエンジニアによるセミナー、
+              <h3>イベント参加申込画面です。<br>
+                  ここでは、毎月生徒学習に役立つ勉強会や、現役で活躍されているエンジニアによるセミナー、
                   実力を試すことができる試験、生徒同士の交流会や催事など生徒が気軽に楽しめる・学べるよう毎月数多くのイベントを開催中！
               </h3>
           </div>
@@ -50,7 +51,9 @@
               @endforeach
             </select>
             <div class="search2">
-            <input type="submit" class="btn btn-primary" value="絞り込む">       
+            <a href="#title">
+            <input type="submit" class="btn btn-primary" value="絞り込む">
+            </a>     
             </div>
             </form>
           </div>
@@ -88,7 +91,9 @@
           <!-- ホーム画面 イベント一覧 表 -->
             <table class="table">
               <tr>
+              <a id="title">
                 <th nowrap>イベント番号</th>
+              </a>
                 <th nowrap>イベント名</th>
                 <th nowrap>イベント種別</th>
                 <th nowrap>開催日時</th>

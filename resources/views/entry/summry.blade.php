@@ -43,11 +43,11 @@
   <!-- イベント申込ボタン(1回でも申込したイベントの場合、日付を超えたイベント場合は申込確認ボタンが表示されない様にする) -->
   @if(1 > count($entry))
   @if($event->event_date > now())
-  <a href="{{url('entry/confirm/'.$event->id)}}" class="btn">イベント申込確認へ</a>
+  <a href="{{url('entry/confirm/'.$event->id)}}" class="btn1">イベント申込確認へ</a>
   @endif
   @endif
 
   <!-- ホームへ戻るボタン -->
-  <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
+  <a href="{{ url('/entry') }}" class="btn1">ホームへ戻る</a>
 </body>
 </html>

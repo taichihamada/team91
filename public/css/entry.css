@@ -139,7 +139,7 @@ body {
     font-family: system-ui;
 }
 
-.btn{
+.btn {
   background: #008080;
   color: white;
   font-size:16px;
@@ -150,6 +150,20 @@ body {
   margin: 10 800px;
   text-align: center;
 }
+
+.btn1 {
+    background: #008080;
+    color: white;
+    font-size:16px;
+    width: 200px;
+    height: 50px;
+    font-weight:bold;
+    padding: 10px 20px;
+    margin: 10 800px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+  }
   
 
 

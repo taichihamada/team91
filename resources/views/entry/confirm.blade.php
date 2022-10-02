@@ -47,18 +47,18 @@
     @csrf
     <input type="hidden" name="event_id" value="{{$event->id}}">
     <input type="hidden" name="event_name" value="{{$event->name}}">
-    <button type="submit" class="btn">申込</button>
+    <button type="submit" class="btn1">申込</button>
     </form>
   </div> 
 
   <!-- イベント詳細へ戻るボタン -->
   <div class="btn-group me-2" role="group" aria-label="Second group">
-    <a href="{{ url('/entry/summry/' .$event->id) }}" class="btn">イベント詳細へ戻る</a>
+    <a href="{{ url('/entry/summry/' .$event->id) }}" class="btn1">イベント詳細へ戻る</a>
   </div>
 
   <!-- ホームへ戻るボタン -->
   <div class="btn-group me-2" role="group" aria-label="third group">
-    <a href="{{ url('/entry') }}" class="btn">ホームへ戻る</a>
+    <a href="{{ url('/entry') }}" class="btn1">ホームへ戻る</a>
   </div>
 
 </body>
